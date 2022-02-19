@@ -1,0 +1,20 @@
+{
+    "name": "idleberg/vite-manifest",
+    "description": "A parser for Vite v2 manifest files",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Idleberg\\ViteManifest\\": "src"
+        }
+    },
+    "authors": [
+        {
+            "name": "Jan T. Sott",
+            "email": "idleberg@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "riimu/kit-pathjoin": "^1.2"
+    }
+}
