@@ -24,8 +24,6 @@
 
 namespace Idleberg\ViteManifest;
 
-require_once __DIR__ . '/../vendor/autoload.php';
-
 use Riimu\Kit\PathJoin\Path;
 
 class ViteManifest
