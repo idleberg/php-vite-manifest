@@ -29,9 +29,9 @@ use Riimu\Kit\PathJoin\Path;
 class ViteManifest
 {
     private $manifest;
-    protected $basePath;
+    private $basePath;
 
-    public function __construct(string $manifestFile, string $basePath = "")
+    public function __construct(string $manifestFile)
     {
         if (!file_exists($manifestFile)) {
             throw new \Exception("Manifest file does not exist: {$manifestFile}");
@@ -45,11 +45,7 @@ class ViteManifest
             throw new \Exception("Failed loading manifest: {$th}");
         }
 
-        if ($basePath && !file_exists($basePath)) {
-            throw new \Exception("Base path does not exist: {$basePath}");
-        }
-
-        $this->basePath = $basePath;
+        $this->basePath = dirname($manifestFile);
     }
 
     /**
@@ -74,7 +70,7 @@ class ViteManifest
             ? [
                 "hash" => $this->getFileHash($this->manifest[$entry]["file"]),
                 "url"  => $this->getPath($this->manifest[$entry]["file"])
-            ] : "";
+            ] : null;
     }
 
     /**
