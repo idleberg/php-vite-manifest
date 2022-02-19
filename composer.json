@@ -2,9 +2,6 @@
     "name": "idleberg/vite-manifest",
     "description": "A parser for Vite v2 manifest files",
     "type": "library",
-    "require": {
-      "php": ">=7.0.0"
-    },
     "license": "MIT",
     "autoload": {
         "psr-4": {
@@ -18,6 +15,7 @@
         }
     ],
     "require": {
+        "php": ">=7.0.0",
         "riimu/kit-pathjoin": "^1.2"
     }
 }
