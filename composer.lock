@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fe49545512e14937de9a95a9494ab324",
+    "content-hash": "0f994d2abad642183ca85fe59d905f5b",
     "packages": [
         {
             "name": "riimu/kit-pathjoin",
@@ -67,7 +67,9 @@
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "php": ">=7.0.0"
+    },
     "platform-dev": [],
     "plugin-api-version": "2.2.0"
 }
