@@ -17,7 +17,7 @@ Import and initialize the Bandcamp module
 use Idleberg\ViteManifest\ViteManifest;
 
 $vm = new ViteManifest(
-    "patch/to/manifest.json"
+    "path/to/manifest.json"
 )
 ```
 
