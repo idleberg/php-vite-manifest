@@ -1,9 +1,9 @@
 # Vite Manifest
 
-> A parser for [Vite](https://bandcamp.com/developer) v2 manifest files
+> A parser for [Vite](https://vitejs.dev/) v2 manifest files
 
-[![Packagist](https://flat.badgen.net/packagist/license/idleberg/vite-manifest)](https://www.npmjs.org/package/idleberg/vite-manifest)
-[![Packagist](https://flat.badgen.net/packagist/v/idleberg/vite-manifest)](https://www.npmjs.org/package/idleberg/vite-manifest)
+[![Packagist](https://flat.badgen.net/packagist/license/idleberg/vite-manifest)](https://packagist.org/packages/idleberg/vite-manifest)
+[![Packagist](https://flat.badgen.net/packagist/v/idleberg/vite-manifest)](https://packagist.org/packages/idleberg/vite-manifest)
 
 ## Installation
 
@@ -11,14 +11,10 @@
 
 ## Usage
 
-Import and initialize the Bandcamp module
-
 ```php
 use Idleberg\ViteManifest\ViteManifest;
 
-$vm = new ViteManifest(
-    "patch/to/manifest.json"
-)
+$vm = new ViteManifest("patch/to/manifest.json");
 ```
 
 ### Methods
