@@ -39,7 +39,6 @@ $entrypoint = $vm->getEntrypoint("index.ts");
 
 echo "<script type=\"module\" src=\"{$entrypoint['url']}\" crossorigin integrity=\"{$entrypoint['hash']}\"></script>";
 ```
-
 </details>
 
 #### `getImports()`
@@ -56,6 +55,7 @@ foreach ($vm->getImports("index.ts") as $import) {
    echo "<link rel=\"modulepreload\" href=\"{$import['url']}\" />";
 }
 ```
+</details>
 
 ## License
 
