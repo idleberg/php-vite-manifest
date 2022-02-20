@@ -8,6 +8,8 @@
         "vitejs",
         "vite manifest"
     ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "autoload": {
         "psr-4": {
             "Idleberg\\ViteManifest\\": "src"
