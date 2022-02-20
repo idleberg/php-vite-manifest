@@ -31,6 +31,8 @@ Usage: `getEntrypoint(fileName)`
 
 Returns the entrypoint from the manifest
 
+**Example**
+
 ```php
 $entrypoint = $vm->getEntrypoint("index.ts");
 
@@ -43,6 +45,8 @@ echo "<script type='module' src='$url' crossorigin integrity='$hash'></script>" 
 Usage: `getImports(fileName)`
 
 Returns imports from the manifest
+
+**Example**
 
 ```php
 foreach ($vm->getImports("index.ts") as $import) {
