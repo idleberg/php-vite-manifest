@@ -53,8 +53,8 @@ Returns imports from the manifest
 
 ```php
 foreach ($vm->getImports("index.ts") as $import) {
-    ["url" => $url] = $entrypoint;
-    echo "<link rel=\"modulepreload\" href=\"{$import['url']}\" />" . PHP_EOL;
+    ["url" => $url] = $import;
+    echo "<link rel=\"modulepreload\" href=\"$url\" />" . PHP_EOL;
 }
 ```
 </details>
