@@ -27,7 +27,7 @@ Returns the contents of the manifest file as a PHP array
 
 #### `getEntrypoint()`
 
-Usage: `getEntrypoint(fileName)`
+Usage: `getEntrypoint(string $fileName)`
 
 Returns the entrypoint from the manifest
 
@@ -42,7 +42,7 @@ echo "<script type='module' src='$url' crossorigin integrity='$hash'></script>" 
 
 #### `getImports()`
 
-Usage: `getImports(fileName)`
+Usage: `getImports(string $fileName)`
 
 Returns imports for a file listed in the manifest
 
