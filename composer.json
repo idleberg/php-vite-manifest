@@ -3,6 +3,11 @@
     "description": "A parser for Vite v2 manifest files",
     "type": "library",
     "license": "MIT",
+    "keywords": [
+        "vite",
+        "vitejs",
+        "vite manifest"
+    ],
     "autoload": {
         "psr-4": {
             "Idleberg\\ViteManifest\\": "src"
