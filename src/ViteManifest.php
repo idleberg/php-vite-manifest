@@ -74,7 +74,7 @@ class ViteManifest
     }
 
     /**
-     * Returns imports from the manifest
+     * Returns imports for a file listed in the manifest
      *
      * @param string $entry
      * @return array

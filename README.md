@@ -44,7 +44,7 @@ echo "<script type='module' src='$url' crossorigin integrity='$hash'></script>" 
 
 Usage: `getImports(fileName)`
 
-Returns imports from the manifest
+Returns imports for a file listed in the manifest
 
 **Example**
 
