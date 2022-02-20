@@ -16,11 +16,12 @@ use Idleberg\ViteManifest\ViteManifest;
 
 $vm = new ViteManifest("patch/to/manifest.json");
 
+// Output script tags for entrypoints
 $entrypoint = $vm->getEntrypoint("index.ts");
-
 ["url" => $url, "hash" => $hash] = $entrypoint;
 echo "<script type='module' src='$url' crossorigin integrity='$hash'></script>" . PHP_EOL;
 
+// Output preload tags for imports in entrypoints
 foreach ($vm->getImports("index.ts") as $import) {
     ["url" => $url] = $import;
     echo "<link rel='modulepreload' href='$url' />" . PHP_EOL;
