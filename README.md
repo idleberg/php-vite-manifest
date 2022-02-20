@@ -14,7 +14,7 @@
 ```php
 use Idleberg\ViteManifest\ViteManifest;
 
-$vm = new ViteManifest("patch/to/manifest.json");
+$vm = new ViteManifest("path/to/manifest.json");
 
 // Output script tags for entrypoints
 $entrypoint = $vm->getEntrypoint("index.ts");
