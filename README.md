@@ -37,7 +37,8 @@ Returns the entrypoint from the manifest
 ```php
 $entrypoint = $vm->getEntrypoint("index.ts");
 
-echo "<script type=\"module\" src=\"{$entrypoint['url']}\" crossorigin integrity=\"{$entrypoint['hash']}\"></script>" . PHP_EOL;
+["url" => $url, "hash" => $hash] = $entrypoint;
+echo "<script type=\"module\" src=\"$url\" crossorigin integrity=\"$hash\"></script>" . PHP_EOL;
 ```
 </details>
 
@@ -52,7 +53,8 @@ Returns imports from the manifest
 
 ```php
 foreach ($vm->getImports("index.ts") as $import) {
-   echo "<link rel=\"modulepreload\" href=\"{$import['url']}\" />" . PHP_EOL;
+    ["url" => $url] = $entrypoint;
+    echo "<link rel=\"modulepreload\" href=\"{$import['url']}\" />" . PHP_EOL;
 }
 ```
 </details>
