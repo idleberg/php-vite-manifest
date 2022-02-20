@@ -81,12 +81,32 @@ class ViteManifest
      */
     public function getImports(string $entry): array
     {
-        return array_map(function($imports) {
-            return [
-                "hash" => $this->getFileHash($this->manifest[$imports]["file"]),
-                "url"  => $this->getPath($this->manifest[$imports]["file"])
-            ];
-        }, $this->manifest[$entry]["imports"]);
+        return array_filter(
+            array_map(function($import) {
+                return isset($this->manifest[$import]["file"]) ? [
+                    "hash" => $this->getFileHash($this->manifest[$import]["file"]),
+                    "url"  => $this->getPath($this->manifest[$import]["file"])
+                ] : null;
+            }, $this->manifest[$entry]["imports"])
+        );
+    }
+
+    /**
+     * Returns stylesheets for a file listed in the manifest
+     *
+     * @param string $entry
+     * @return array
+     */
+    public function getStyles(string $entry): array
+    {
+        return array_filter(
+            array_map(function($style) {
+                return isset($this->manifest[$style]["css"]) ? [
+                    "hash" => $this->getFileHash($this->manifest[$style]["css"]),
+                    "url"  => $this->getPath($this->manifest[$style]["css"])
+                ] : null;
+            }, $this->manifest[$entry]["css"])
+        );
     }
 
     /**

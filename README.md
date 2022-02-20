@@ -15,17 +15,6 @@
 use Idleberg\ViteManifest\ViteManifest;
 
 $vm = new ViteManifest("path/to/manifest.json");
-
-// Output script tags for entrypoints
-$entrypoint = $vm->getEntrypoint("index.ts");
-["url" => $url, "hash" => $hash] = $entrypoint;
-echo "<script type='module' src='$url' crossorigin integrity='$hash'></script>" . PHP_EOL;
-
-// Output preload tags for entrypoint imports
-foreach ($vm->getImports("index.ts") as $import) {
-    ["url" => $url] = $import;
-    echo "<link rel='modulepreload' href='$url' />" . PHP_EOL;
-}
 ```
 
 ### Methods
@@ -40,6 +29,15 @@ Returns the contents of the manifest file as a PHP array
 
 Usage: `getEntrypoint(string $fileName)`
 
+**Example**
+
+```php
+$entrypoint = $vm->getEntrypoint("index.ts");
+
+["url" => $url, "hash" => $hash] = $entrypoint;
+echo "<script type='module' src='$url' crossorigin integrity='$hash'></script>" . PHP_EOL;
+```
+
 Returns the entrypoint from the manifest
 
 #### `getImports`
@@ -47,6 +45,30 @@ Returns the entrypoint from the manifest
 Usage: `getImports(string $fileName)`
 
 Returns imports for a file listed in the manifest
+
+**Example**
+
+```php
+foreach ($vm->getImports("index.ts") as $import) {
+    ["url" => $url] = $import;
+    echo "<link rel='modulepreload' href='$url' />" . PHP_EOL;
+}
+```
+
+#### `getStyles`
+
+Usage: `getStyles(string $fileName)`
+
+Returns stylesheets for a file listed in the manifest
+
+**Example**
+
+```php
+foreach ($vm->getStyles("index.ts") as $style) {
+    ["url" => $url, "hash" => $hash] = $style;
+    echo "<link rel=\"stylesheet\" href=\"$url\" crossorigin integrity=\"$hash\" />" . PHP_EOL;
+}
+```
 
 ## License
 
