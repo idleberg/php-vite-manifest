@@ -15,45 +15,37 @@
 use Idleberg\ViteManifest\ViteManifest;
 
 $vm = new ViteManifest("patch/to/manifest.json");
-```
 
-### Methods
-
-#### `getManifest()`
-
-Usage: `getManifest()`
-
-Returns the contents of the manifest file as a PHP array
-
-#### `getEntrypoint()`
-
-Usage: `getEntrypoint(string $fileName)`
-
-Returns the entrypoint from the manifest
-
-**Example**
-
-```php
 $entrypoint = $vm->getEntrypoint("index.ts");
 
 ["url" => $url, "hash" => $hash] = $entrypoint;
 echo "<script type='module' src='$url' crossorigin integrity='$hash'></script>" . PHP_EOL;
-```
 
-#### `getImports()`
-
-Usage: `getImports(string $fileName)`
-
-Returns imports for a file listed in the manifest
-
-**Example**
-
-```php
 foreach ($vm->getImports("index.ts") as $import) {
     ["url" => $url] = $import;
     echo "<link rel='modulepreload' href='$url' />" . PHP_EOL;
 }
 ```
+
+### Methods
+
+#### `getManifest`
+
+Usage: `getManifest()`
+
+Returns the contents of the manifest file as a PHP array
+
+#### `getEntrypoint`
+
+Usage: `getEntrypoint(string $fileName)`
+
+Returns the entrypoint from the manifest
+
+#### `getImports`
+
+Usage: `getImports(string $fileName)`
+
+Returns imports for a file listed in the manifest
 
 ## License
 
