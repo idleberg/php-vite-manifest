@@ -21,7 +21,7 @@ $entrypoint = $vm->getEntrypoint("index.ts");
 ["url" => $url, "hash" => $hash] = $entrypoint;
 echo "<script type='module' src='$url' crossorigin integrity='$hash'></script>" . PHP_EOL;
 
-// Output preload tags for imports in entrypoints
+// Output preload tags for entrypoint imports
 foreach ($vm->getImports("index.ts") as $import) {
     ["url" => $url] = $import;
     echo "<link rel='modulepreload' href='$url' />" . PHP_EOL;
