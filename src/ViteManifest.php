@@ -24,28 +24,32 @@
 
 namespace Idleberg\ViteManifest;
 
-use Riimu\Kit\PathJoin\Path;
+use League\Uri\UriResolver;
 
 class ViteManifest
 {
     private $manifest;
-    private $basePath;
+    private $baseUri;
 
-    public function __construct(string $manifestFile)
+    public function __construct(string $manifestFile, string $baseUri)
     {
         if (!file_exists($manifestFile)) {
-            throw new \Exception("Manifest file does not exist: {$manifestFile}");
+            throw new \Exception("Manifest file does not exist: $manifestFile");
         }
 
         try {
             $this->manifest = json_decode(
                 file_get_contents($manifestFile), true
             );
-        } catch (\Throwable $th) {
-            throw new \Exception("Failed loading manifest: {$th}");
+        } catch (\Throwable $errorMessage) {
+            throw new \Exception("Failed loading manifest: $errorMessage");
         }
 
-        $this->basePath = dirname($manifestFile);
+        if (!parse_url($baseUri)) {
+            throw new \Exception("Failed to parse URL: $baseUri");
+        }
+
+        $this->baseUri = $baseUri;
     }
 
     /**
@@ -127,12 +131,12 @@ class ViteManifest
     }
 
     /**
-     * Prepends the base path to the given path.
+     * Resolves URL for a given file path
      *
-     * @param string $file
+     * @param string $filePath
      * @return string
      */
-    private function getPath(string $file): string {
-        return Path::join($this->basePath, $file);
+    private function getPath(string $filePath): string {
+        return UriResolver::resolve($relativeUri, $this->baseUri);
     }
 }

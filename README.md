@@ -11,10 +11,12 @@
 
 ## Usage
 
+Usage: `new ViteManifest(string $manifestPath, string $baseUri)`
+
 ```php
 use Idleberg\ViteManifest\ViteManifest;
 
-$vm = new ViteManifest("path/to/manifest.json");
+$vm = new ViteManifest("path/to/manifest.json", "http://github.com");
 ```
 
 ### Methods

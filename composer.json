@@ -22,7 +22,7 @@
         }
     ],
     "require": {
-        "php": ">=7.0.0",
-        "riimu/kit-pathjoin": "^1.2"
+        "php": "^7.3 || ^8.0",
+        "league/uri-components": "^2.4"
     }
 }
