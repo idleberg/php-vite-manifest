@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e7f4e9084f8d9dfd0e6dfafd290161ba",
+    "content-hash": "d5a6b669a1606ac278afca7e3fb1be2d",
     "packages": [
         {
-            "name": "league/uri-components",
-            "version": "2.4.0",
+            "name": "league/uri",
+            "version": "6.5.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/thephpleague/uri-components.git",
-                "reference": "c97c83e7d915cdb0163f0322a87a07df1d0d9fe1"
+                "url": "https://github.com/thephpleague/uri.git",
+                "reference": "c68ca445abb04817d740ddd6d0b3551826ef0c5a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/uri-components/zipball/c97c83e7d915cdb0163f0322a87a07df1d0d9fe1",
-                "reference": "c97c83e7d915cdb0163f0322a87a07df1d0d9fe1",
+                "url": "https://api.github.com/repos/thephpleague/uri/zipball/c68ca445abb04817d740ddd6d0b3551826ef0c5a",
+                "reference": "c68ca445abb04817d740ddd6d0b3551826ef0c5a",
                 "shasum": ""
             },
             "require": {
@@ -26,29 +26,27 @@
                 "php": "^7.3 || ^8.0",
                 "psr/http-message": "^1.0"
             },
+            "conflict": {
+                "league/uri-schemes": "^1.0"
+            },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.19",
-                "guzzlehttp/psr7": "^1.4.2",
-                "laminas/laminas-diactoros": "^2.6.0",
-                "league/uri": "^6.0",
-                "phpstan/phpstan": "^0.12.94",
-                "phpstan/phpstan-phpunit": "^0.12.21",
-                "phpstan/phpstan-strict-rules": "^0.12.10",
-                "phpunit/phpunit": "^9.5.8"
+                "friendsofphp/php-cs-fixer": "^2.19 || ^3.0",
+                "phpstan/phpstan": "^0.12.90",
+                "phpstan/phpstan-phpunit": "^0.12.22",
+                "phpstan/phpstan-strict-rules": "^0.12.11",
+                "phpunit/phpunit": "^8.0 || ^9.0",
+                "psr/http-factory": "^1.0"
             },
             "suggest": {
                 "ext-fileinfo": "Needed to create Data URI from a filepath",
-                "ext-gmp": "to improve handle IPV4 parsing",
-                "ext-intl": "to handle IDN host",
-                "jeremykendall/php-domain-parser": "Public Suffix and Top Level Domain parsing implemented in PHP",
-                "league/uri": "to allow manipulating URI objects",
-                "php-64bit": "to improve handle IPV4 parsing",
-                "psr/http-message-implementation": "to allow manipulating PSR-7 Uri objects"
+                "ext-intl": "Needed to improve host validation",
+                "league/uri-components": "Needed to easily manipulate URI objects",
+                "psr/http-factory": "Needed to use the URI factory"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.x-dev"
+                    "dev-master": "6.x-dev"
                 }
             },
             "autoload": {
@@ -67,33 +65,42 @@
                     "homepage": "https://nyamsprod.com"
                 }
             ],
-            "description": "URI components manipulation library",
+            "description": "URI manipulation library",
             "homepage": "http://uri.thephpleague.com",
             "keywords": [
-                "authority",
-                "components",
-                "fragment",
-                "host",
-                "path",
-                "port",
-                "query",
+                "data-uri",
+                "file-uri",
+                "ftp",
+                "hostname",
+                "http",
+                "https",
+                "middleware",
+                "parse_str",
+                "parse_url",
+                "psr-7",
+                "query-string",
+                "querystring",
                 "rfc3986",
-                "scheme",
+                "rfc3987",
+                "rfc6570",
                 "uri",
+                "uri-template",
                 "url",
-                "userinfo"
+                "ws"
             ],
             "support": {
-                "issues": "https://github.com/thephpleague/uri-components/issues",
-                "source": "https://github.com/thephpleague/uri-components/tree/2.4.0"
+                "docs": "https://uri.thephpleague.com",
+                "forum": "https://thephpleague.slack.com",
+                "issues": "https://github.com/thephpleague/uri/issues",
+                "source": "https://github.com/thephpleague/uri/tree/6.5.0"
             },
             "funding": [
                 {
-                    "url": "https://github.com/nyamsprod",
+                    "url": "https://github.com/sponsors/nyamsprod",
                     "type": "github"
                 }
             ],
-            "time": "2021-08-02T20:31:29+00:00"
+            "time": "2021-08-27T09:54:07+00:00"
         },
         {
             "name": "league/uri-interfaces",
