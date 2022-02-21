@@ -68,7 +68,7 @@ Returns stylesheets for a file listed in the manifest
 ```php
 foreach ($vm->getStyles("index.ts") as $style) {
     ["url" => $url, "hash" => $hash] = $style;
-    echo "<link rel=\"stylesheet\" href=\"$url\" crossorigin integrity=\"$hash\" />" . PHP_EOL;
+    echo "<link rel='stylesheet' href='$url' crossorigin integrity='$hash' />" . PHP_EOL;
 }
 ```
 
