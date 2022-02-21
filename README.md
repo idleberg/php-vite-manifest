@@ -34,8 +34,10 @@ Usage: `getEntrypoint(string $fileName)`
 ```php
 $entrypoint = $vm->getEntrypoint("index.ts");
 
-["url" => $url, "hash" => $hash] = $entrypoint;
-echo "<script type='module' src='$url' crossorigin integrity='$hash'></script>" . PHP_EOL;
+if ($entrypoint) {
+    ["url" => $url, "hash" => $hash] = $entrypoint;
+    echo "<script type='module' src='$url' crossorigin integrity='$hash'></script>" . PHP_EOL;
+}
 ```
 
 Returns the entrypoint from the manifest
