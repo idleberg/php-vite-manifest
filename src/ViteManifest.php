@@ -24,6 +24,7 @@
 
 namespace Idleberg\ViteManifest;
 
+use League\Uri\Http;
 use League\Uri\UriResolver;
 
 class ViteManifest
@@ -133,10 +134,13 @@ class ViteManifest
     /**
      * Resolves URL for a given file path
      *
-     * @param string $filePath
+     * @param string $relativePath
      * @return string
      */
-    private function getPath(string $filePath): string {
-        return UriResolver::resolve($relativeUri, $this->baseUri);
+    private function getPath(string $relativePath): string {
+        $baseUri = Http::createFromString($this->baseUri);
+        $relativeUri = Http::createFromString($relativePath);
+
+        return UriResolver::resolve($relativeUri, $baseUri);
     }
 }
