@@ -13,6 +13,8 @@
 
 Usage: `new ViteManifest(string $manifestPath, string $baseUri)`
 
+**Example**
+
 ```php
 use Idleberg\ViteManifest\ViteManifest;
 
