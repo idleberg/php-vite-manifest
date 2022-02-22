@@ -20,7 +20,10 @@ Usage: `new ViteManifest(string $manifestPath, string $baseUri)`
 ```php
 use Idleberg\ViteManifest\ViteManifest;
 
-$vm = new ViteManifest("path/to/manifest.json", "http://github.com");
+$baseUrl = "https://idleberg.github.io";
+$manifest = $baseUrl . "/manifest.json";
+
+$vm = new ViteManifest($manifest, $baseUrl);
 ```
 
 ### Methods
