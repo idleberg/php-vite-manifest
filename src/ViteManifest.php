@@ -106,9 +106,9 @@ class ViteManifest
     {
         return array_filter(
             array_map(function($style) {
-                return isset($this->manifest[$style]["css"]) ? [
-                    "hash" => $this->getFileHash($this->manifest[$style]["css"]),
-                    "url"  => $this->getPath($this->manifest[$style]["css"])
+                return isset($style) ? [
+                    "hash" => $this->getFileHash($style),
+                    "url"  => $this->getPath($style)
                 ] : null;
             }, $this->manifest[$entry]["css"])
         );
