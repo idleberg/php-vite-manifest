@@ -3,6 +3,7 @@
 > A parser for [Vite](https://vitejs.dev/) v2 manifest files
 
 [![Packagist](https://flat.badgen.net/packagist/license/idleberg/vite-manifest)](https://packagist.org/packages/idleberg/vite-manifest)
+[![Packagist](https://flat.badgen.net/packagist/php/idleberg/vite-manifest)](https://packagist.org/packages/idleberg/vite-manifest)
 [![Packagist](https://flat.badgen.net/packagist/v/idleberg/vite-manifest)](https://packagist.org/packages/idleberg/vite-manifest)
 
 ## Installation
