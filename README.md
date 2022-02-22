@@ -37,7 +37,7 @@ Returns the contents of the manifest file as a PHP array
 
 #### `getEntrypoint`
 
-Usage: `getEntrypoint(string $fileName)`
+Usage: `getEntrypoint(string $entrypoint)`
 
 **Example**
 
@@ -54,7 +54,7 @@ Returns the entrypoint from the manifest
 
 #### `getImports`
 
-Usage: `getImports(string $fileName)`
+Usage: `getImports(string $entrypoint)`
 
 Returns imports for a file listed in the manifest
 
@@ -69,7 +69,7 @@ foreach ($vm->getImports("index.ts") as $import) {
 
 #### `getStyles`
 
-Usage: `getStyles(string $fileName)`
+Usage: `getStyles(string $entrypoint)`
 
 Returns stylesheets for a file listed in the manifest
 
