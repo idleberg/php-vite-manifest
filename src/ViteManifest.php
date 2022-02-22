@@ -29,8 +29,8 @@ use League\Uri\UriResolver;
 
 class ViteManifest
 {
-    private $manifest;
-    private $baseUri;
+    private string $manifest;
+    private string $baseUri;
 
     public function __construct(string $manifestFile, string $baseUri)
     {
