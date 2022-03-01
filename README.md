@@ -3,6 +3,7 @@
 > A parser for [Vite](https://vitejs.dev/) v2 manifest files
 
 [![Packagist](https://flat.badgen.net/packagist/license/idleberg/vite-manifest)](https://packagist.org/packages/idleberg/vite-manifest)
+[![Packagist](https://flat.badgen.net/packagist/php/idleberg/vite-manifest)](https://packagist.org/packages/idleberg/vite-manifest)
 [![Packagist](https://flat.badgen.net/packagist/v/idleberg/vite-manifest)](https://packagist.org/packages/idleberg/vite-manifest)
 
 ## Installation
@@ -20,7 +21,10 @@ Usage: `new ViteManifest(string $manifestPath, string $baseUri)`
 ```php
 use Idleberg\ViteManifest\ViteManifest;
 
-$vm = new ViteManifest("path/to/manifest.json", "http://github.com");
+$baseUrl = "https://idleberg.github.io";
+$manifest = $baseUrl . "/manifest.json";
+
+$vm = new ViteManifest($manifest, $baseUrl);
 ```
 
 ### Methods
@@ -33,7 +37,7 @@ Returns the contents of the manifest file as a PHP array
 
 #### `getEntrypoint`
 
-Usage: `getEntrypoint(string $fileName)`
+Usage: `getEntrypoint(string $entrypoint)`
 
 **Example**
 
@@ -50,7 +54,7 @@ Returns the entrypoint from the manifest
 
 #### `getImports`
 
-Usage: `getImports(string $fileName)`
+Usage: `getImports(string $entrypoint)`
 
 Returns imports for a file listed in the manifest
 
@@ -65,7 +69,7 @@ foreach ($vm->getImports("index.ts") as $import) {
 
 #### `getStyles`
 
-Usage: `getStyles(string $fileName)`
+Usage: `getStyles(string $entrypoint)`
 
 Returns stylesheets for a file listed in the manifest
 

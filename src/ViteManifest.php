@@ -29,8 +29,8 @@ use League\Uri\UriResolver;
 
 class ViteManifest
 {
-    private $manifest;
-    private $baseUri;
+    private string $manifest;
+    private string $baseUri;
 
     public function __construct(string $manifestFile, string $baseUri)
     {
@@ -66,25 +66,25 @@ class ViteManifest
     /**
      * Returns the entrypoint from the manifest
      *
-     * @param string $entry
+     * @param string $entrypoint
      * @return array
      */
-    public function getEntrypoint(string $entry): array
+    public function getEntrypoint(string $entrypoint): array
     {
-        return isset($this->manifest[$entry])
+        return isset($this->manifest[$entrypoint])
             ? [
-                "hash" => $this->getFileHash($this->manifest[$entry]["file"]),
-                "url"  => $this->getPath($this->manifest[$entry]["file"])
+                "hash" => $this->getFileHash($this->manifest[$entrypoint]["file"]),
+                "url"  => $this->getPath($this->manifest[$entrypoint]["file"])
             ] : null;
     }
 
     /**
      * Returns imports for a file listed in the manifest
      *
-     * @param string $entry
+     * @param string $entrypoint
      * @return array
      */
-    public function getImports(string $entry): array
+    public function getImports(string $entrypoint): array
     {
         return array_filter(
             array_map(function($import) {
@@ -92,17 +92,17 @@ class ViteManifest
                     "hash" => $this->getFileHash($this->manifest[$import]["file"]),
                     "url"  => $this->getPath($this->manifest[$import]["file"])
                 ] : null;
-            }, $this->manifest[$entry]["imports"])
+            }, $this->manifest[$entrypoint]["imports"])
         );
     }
 
     /**
      * Returns stylesheets for a file listed in the manifest
      *
-     * @param string $entry
+     * @param string $entrypoint
      * @return array
      */
-    public function getStyles(string $entry): array
+    public function getStyles(string $entrypoint): array
     {
         return array_filter(
             array_map(function($style) {
@@ -110,7 +110,7 @@ class ViteManifest
                     "hash" => $this->getFileHash($style),
                     "url"  => $this->getPath($style)
                 ] : null;
-            }, $this->manifest[$entry]["css"])
+            }, $this->manifest[$entrypoint]["css"])
         );
     }
 
