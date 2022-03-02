@@ -71,11 +71,10 @@ class ViteManifest
      */
     public function getEntrypoint(string $entrypoint): array
     {
-        return isset($this->manifest[$entrypoint])
-            ? [
-                "hash" => $this->getFileHash($this->manifest[$entrypoint]["file"]),
-                "url"  => $this->getPath($this->manifest[$entrypoint]["file"])
-            ] : null;
+        return isset($this->manifest[$entrypoint]) ? [
+            "hash" => $this->getFileHash($this->manifest[$entrypoint]["file"]),
+            "url"  => $this->getPath($this->manifest[$entrypoint]["file"])
+        ] : [];
     }
 
     /**
@@ -91,7 +90,7 @@ class ViteManifest
                 return isset($this->manifest[$import]["file"]) ? [
                     "hash" => $this->getFileHash($this->manifest[$import]["file"]),
                     "url"  => $this->getPath($this->manifest[$import]["file"])
-                ] : null;
+                ] : [];
             }, $this->manifest[$entrypoint]["imports"])
         );
     }
@@ -109,7 +108,7 @@ class ViteManifest
                 return isset($style) ? [
                     "hash" => $this->getFileHash($style),
                     "url"  => $this->getPath($style)
-                ] : null;
+                ] : [];
             }, $this->manifest[$entrypoint]["css"])
         );
     }
