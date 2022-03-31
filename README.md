@@ -22,7 +22,7 @@ Usage: `new ViteManifest(string $manifestPath, string $baseUri)`
 use Idleberg\ViteManifest\ViteManifest;
 
 $baseUrl = "https://idleberg.github.io";
-$manifest = $baseUrl . "/manifest.json";
+$manifest = "path/to/manifest.json";
 
 $vm = new ViteManifest($manifest, $baseUrl);
 ```
