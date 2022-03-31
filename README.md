@@ -5,6 +5,7 @@
 [![Packagist](https://flat.badgen.net/packagist/license/idleberg/vite-manifest)](https://packagist.org/packages/idleberg/vite-manifest)
 [![Packagist](https://flat.badgen.net/packagist/php/idleberg/vite-manifest)](https://packagist.org/packages/idleberg/vite-manifest)
 [![Packagist](https://flat.badgen.net/packagist/v/idleberg/vite-manifest)](https://packagist.org/packages/idleberg/vite-manifest)
+[![CI](https://img.shields.io/github/workflow/status/idleberg/vite-manifest/CI?style=flat-square)](https://github.com/idleberg/vite-manifest/actions)
 
 ## Installation
 
