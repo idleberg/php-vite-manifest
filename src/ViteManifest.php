@@ -29,12 +29,13 @@ use League\Uri\UriResolver;
 
 class ViteManifest
 {
-    private string $manifest;
+    private array $manifest;
     private string $baseUri;
 
     public function __construct(string $manifestFile, string $baseUri)
     {
-        if (!file_exists($manifestFile)) {
+        var_dump($manifestFile);
+        if (!file_exists(realpath($manifestFile))) {
             throw new \Exception("Manifest file does not exist: $manifestFile");
         }
 
