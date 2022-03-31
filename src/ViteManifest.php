@@ -34,7 +34,6 @@ class ViteManifest
 
     public function __construct(string $manifestFile, string $baseUri)
     {
-        var_dump($manifestFile);
         if (!file_exists(realpath($manifestFile))) {
             throw new \Exception("Manifest file does not exist: $manifestFile");
         }
