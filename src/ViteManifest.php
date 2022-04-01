@@ -40,7 +40,8 @@ class ViteManifest
 
         try {
             $this->manifest = json_decode(
-                file_get_contents($manifestFile), true
+                file_get_contents($manifestFile),
+                true
             );
         } catch (\Throwable $errorMessage) {
             throw new \Exception("Failed loading manifest: $errorMessage");
@@ -86,7 +87,7 @@ class ViteManifest
     public function getImports(string $entrypoint): array
     {
         return array_filter(
-            array_map(function($import) {
+            array_map(function ($import) {
                 return isset($this->manifest[$import]["file"]) ? [
                     "hash" => $this->getFileHash($this->manifest[$import]["file"]),
                     "url"  => $this->getPath($this->manifest[$import]["file"])
@@ -104,7 +105,7 @@ class ViteManifest
     public function getStyles(string $entrypoint): array
     {
         return array_filter(
-            array_map(function($style) {
+            array_map(function ($style) {
                 return isset($style) ? [
                     "hash" => $this->getFileHash($style),
                     "url"  => $this->getPath($style)
@@ -124,8 +125,10 @@ class ViteManifest
         return "sha256-" . base64_encode(
             openssl_digest(
                 file_get_contents(
-                   $this->getPath($file)
-                ), "sha256", true
+                    $this->getPath($file)
+                ),
+                "sha256",
+                true
             )
         );
     }
@@ -136,7 +139,8 @@ class ViteManifest
      * @param string $relativePath
      * @return string
      */
-    private function getPath(string $relativePath): string {
+    private function getPath(string $relativePath): string
+    {
         $baseUri = Http::createFromString($this->baseUri);
         $relativeUri = Http::createFromString($relativePath);
 
