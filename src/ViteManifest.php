@@ -68,12 +68,13 @@ class ViteManifest
      * Returns the entrypoint from the manifest
      *
      * @param string $entrypoint
+     * @param bool $hash
      * @return array
      */
-    public function getEntrypoint(string $entrypoint): array
+    public function getEntrypoint(string $entrypoint, bool $hash = true): array
     {
         return isset($this->manifest[$entrypoint]) ? [
-            "hash" => $this->getFileHash($this->manifest[$entrypoint]["file"]),
+            "hash" => $hash ? $this->getFileHash($this->manifest[$entrypoint]["file"]) : null,
             "url"  => $this->getPath($this->manifest[$entrypoint]["file"])
         ] : [];
     }
@@ -82,14 +83,15 @@ class ViteManifest
      * Returns imports for a file listed in the manifest
      *
      * @param string $entrypoint
+     * @param bool $hash
      * @return array
      */
-    public function getImports(string $entrypoint): array
+    public function getImports(string $entrypoint, bool $hash = true): array
     {
         return array_filter(
             array_map(function ($import) {
                 return isset($this->manifest[$import]["file"]) ? [
-                    "hash" => $this->getFileHash($this->manifest[$import]["file"]),
+                    "hash" => $hash ? $this->getFileHash($this->manifest[$import]["file"]) : null,
                     "url"  => $this->getPath($this->manifest[$import]["file"])
                 ] : [];
             }, $this->manifest[$entrypoint]["imports"])
@@ -100,17 +102,18 @@ class ViteManifest
      * Returns stylesheets for a file listed in the manifest
      *
      * @param string $entrypoint
+     * @param bool $hash
      * @return array
      */
-    public function getStyles(string $entrypoint): array
+    public function getStyles(string $entrypoint, bool $hash = true): array
     {
         return array_filter(
-            array_map(function ($style) {
+            array_map(function ($style, $hash) {
                 return isset($style) ? [
-                    "hash" => $this->getFileHash($style),
+                    "hash" => $hash ? $this->getFileHash($style) : null,
                     "url"  => $this->getPath($style)
                 ] : [];
-            }, $this->manifest[$entrypoint]["css"])
+            }, $this->manifest[$entrypoint]["css"], [$hash])
         );
     }
 

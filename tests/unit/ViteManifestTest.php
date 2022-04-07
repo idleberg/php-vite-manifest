@@ -40,12 +40,32 @@ class ViteManifestTest extends \Codeception\Test\Unit
         $this->assertEquals($hash, "sha256-hK5PvH3PaGbMYq5EuedyA6F5uVkfoEwAznLNThffuZ8=");
     }
 
+    public function testGetEntryPointWithoutHash()
+    {
+        $entrypoint = $this->vm->getEntrypoint('demo.ts', false);
+        ["url" => $url, "hash" => $hash] = $entrypoint;
+
+        $this->assertFileExists($url);
+        $this->assertEquals($hash, null);
+    }
+
     public function testGetImports()
     {
         foreach ($this->vm->getImports("demo.ts") as $import) {
-            ["url" => $url] = $import;
+            ["url" => $url, "hash" => $hash] = $import;
 
             $this->assertFileExists($url);
+            $this->assertEquals($hash, "sha256-EEEKapOxnF8qZUxsx0ksgdBVnEB+8dXUJvH75TwCWvU=");
+        }
+    }
+
+    public function testGetImportsWithoutHash()
+    {
+        foreach ($this->vm->getImports("demo.ts", false) as $import) {
+            ["url" => $url, "hash" => $hash] = $import;
+
+            $this->assertFileExists($url);
+            $this->assertEquals($hash, null);
         }
     }
 
@@ -56,6 +76,16 @@ class ViteManifestTest extends \Codeception\Test\Unit
 
             $this->assertFileExists($url);
             $this->assertEquals($hash, "sha256-EEEKapOxnF8qZUxsx0ksgdBVnEB+8dXUJvH75TwCWvU=");
+        }
+    }
+
+    public function testGetStylesWithoutHash()
+    {
+        foreach ($this->vm->getStyles("demo.ts", false) as $style) {
+            ["url" => $url, "hash" => $hash] = $style;
+
+            $this->assertFileExists($url);
+            $this->assertEquals($hash, null);
         }
     }
 }
