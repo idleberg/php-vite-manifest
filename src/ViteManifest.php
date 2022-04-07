@@ -94,7 +94,7 @@ class ViteManifest
                     "hash" => $hash ? $this->getFileHash($this->manifest[$import]["file"]) : null,
                     "url"  => $this->getPath($this->manifest[$import]["file"])
                 ] : [];
-            }, $this->manifest[$entrypoint]["imports"])
+            }, $this->manifest[$entrypoint]["imports"], [$hash])
         );
     }
 
