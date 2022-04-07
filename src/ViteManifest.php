@@ -89,7 +89,7 @@ class ViteManifest
     public function getImports(string $entrypoint, bool $hash = true): array
     {
         return array_filter(
-            array_map(function ($import) {
+            array_map(function ($import, $hash) {
                 return isset($this->manifest[$import]["file"]) ? [
                     "hash" => $hash ? $this->getFileHash($this->manifest[$import]["file"]) : null,
                     "url"  => $this->getPath($this->manifest[$import]["file"])
