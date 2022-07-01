@@ -31,8 +31,9 @@ class ViteManifest
 {
     private array $manifest;
     private string $baseUri;
+    private string $algorithm;
 
-    public function __construct(string $manifestFile, string $baseUri)
+    public function __construct(string $manifestFile, string $baseUri, string $algorithm = "sha256")
     {
         if (!file_exists(realpath($manifestFile))) {
             throw new \Exception("Manifest file does not exist: $manifestFile");
@@ -52,6 +53,12 @@ class ViteManifest
         }
 
         $this->baseUri = $baseUri;
+
+        if (!in_array($algorithm, ["sha256", "sha384", "sha512"])) {
+            throw new \Exception("Unsupported hashing algorithm: $algorithm");
+        }
+
+        $this->algorithm = $algorithm;
     }
 
     /**
@@ -90,6 +97,7 @@ class ViteManifest
     {
         return array_filter(
             array_map(function ($import, $hash) {
+                var_dump($this->manifest[$import]);
                 return isset($this->manifest[$import]["file"]) ? [
                     "hash" => $hash ? $this->getFileHash($this->manifest[$import]["file"]) : null,
                     "url"  => $this->getPath($this->manifest[$import]["file"])
@@ -118,19 +126,19 @@ class ViteManifest
     }
 
     /**
-     * Returns SHA-256 hash of file
+     * Returns hash of file
      *
      * @param string $file
      * @return string
      */
     private function getFileHash(string $file): string
     {
-        return "sha256-" . base64_encode(
+        return "{$this->algorithm}-" . base64_encode(
             openssl_digest(
                 file_get_contents(
                     $this->getPath($file)
                 ),
-                "sha256",
+                $this->algorithm,
                 true
             )
         );
