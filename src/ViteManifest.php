@@ -97,7 +97,6 @@ class ViteManifest
     {
         return array_filter(
             array_map(function ($import, $hash) {
-                var_dump($this->manifest[$import]);
                 return isset($this->manifest[$import]["file"]) ? [
                     "hash" => $hash ? $this->getFileHash($this->manifest[$import]["file"]) : null,
                     "url"  => $this->getPath($this->manifest[$import]["file"])
