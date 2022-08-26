@@ -101,7 +101,7 @@ class ViteManifest
                     "hash" => $hash ? $this->getFileHash($this->manifest[$import]["file"]) : null,
                     "url"  => $this->getPath($this->manifest[$import]["file"])
                 ] : [];
-            }, $this->manifest[$entrypoint]["imports"], [$hash])
+            }, $this->manifest[$entrypoint]["imports"] ?? [], [$hash])
         );
     }
 
@@ -120,7 +120,7 @@ class ViteManifest
                     "hash" => $hash ? $this->getFileHash($style) : null,
                     "url"  => $this->getPath($style)
                 ] : [];
-            }, $this->manifest[$entrypoint]["css"], [$hash])
+            }, $this->manifest[$entrypoint]["css"] ?? [], [$hash])
         );
     }
 
