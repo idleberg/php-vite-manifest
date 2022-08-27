@@ -33,57 +33,6 @@ class ViteManifestNoCssTest extends \Codeception\Test\Unit
 
     public function testGetStyles()
     {
-        foreach ($this->vm->getStyles("demo.ts") as $style) {
-            ["url" => $url, "hash" => $hash] = $style;
-
-            $this->assertFileExists($url);
-            $this->assertEquals($hash, "sha256-EEEKapOxnF8qZUxsx0ksgdBVnEB+8dXUJvH75TwCWvU=");
-        }
-    }
-
-    public function testGetStylesSHA256()
-    {
-        $vm = new ViteManifest($this->manifest, $this->baseUrl, "sha256");
-
-        foreach ($vm->getStyles("demo.ts") as $style) {
-            ["url" => $url, "hash" => $hash] = $style;
-
-            $this->assertFileExists($url);
-            $this->assertEquals($hash, "sha256-EEEKapOxnF8qZUxsx0ksgdBVnEB+8dXUJvH75TwCWvU=");
-        }
-    }
-
-    public function testGetStylesSHA384()
-    {
-        $vm = new ViteManifest($this->manifest, $this->baseUrl, "sha384");
-
-        foreach ($vm->getStyles("demo.ts") as $style) {
-            ["url" => $url, "hash" => $hash] = $style;
-
-            $this->assertFileExists($url);
-            $this->assertEquals($hash, "sha384-hRJLv1qN+U3dkKJIw8ANFbwPS/ED0NHZfZU96sK3vRe3evsIbIxjnkoFcJeryuVC");
-        }
-    }
-
-    public function testGetStylesSHA512()
-    {
-        $vm = new ViteManifest($this->manifest, $this->baseUrl, "sha512");
-
-        foreach ($vm->getStyles("demo.ts") as $style) {
-            ["url" => $url, "hash" => $hash] = $style;
-
-            $this->assertFileExists($url);
-            $this->assertEquals($hash, "sha512-vmI3y876ZfoogL2eJuRJy4ToOnrfwPVE7T9yMlhJp5lpSGHZ3ejDNqd7A0QYFlk0/SOugOwB1x0FCWqO95pz4Q==");
-        }
-    }
-
-    public function testGetStylesWithoutHash()
-    {
-        foreach ($this->vm->getStyles("demo.ts", false) as $style) {
-            ["url" => $url, "hash" => $hash] = $style;
-
-            $this->assertFileExists($url);
-            $this->assertEquals($hash, null);
-        }
+        $this->assertEquals(count($this->vm->getStyles("demo.ts")), 0);
     }
 }
