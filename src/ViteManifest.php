@@ -96,7 +96,7 @@ class ViteManifest
     public function getImports(string $entrypoint, bool $hash = true): array
     {
         // TODO: Refactor for PHP 8.x
-        if (!(isset($this->manifest[$entrypoint]) && isset($this->manifest[$entrypoint]["imports"]) && is_array($this->manifest[$entrypoint]["imports"])))
+        if (!isset($this->manifest[$entrypoint]) || !isset($this->manifest[$entrypoint]["imports"]) || !is_array($this->manifest[$entrypoint]["imports"]))
         {
             return [];
         }
@@ -121,7 +121,7 @@ class ViteManifest
     public function getStyles(string $entrypoint, bool $hash = true): array
     {
         // TODO: Refactor for PHP 8.x
-        if (!(isset($this->manifest[$entrypoint]) && isset($this->manifest[$entrypoint]["css"]) && is_array($this->manifest[$entrypoint]["css"])))
+        if (!isset($this->manifest[$entrypoint]) || !isset($this->manifest[$entrypoint]["css"]) || !is_array($this->manifest[$entrypoint]["css"]))
         {
             return [];
         }
