@@ -3,8 +3,8 @@
 > A parser for [Vite](https://vitejs.dev/) v2 manifest files
 
 [![Packagist](https://flat.badgen.net/packagist/license/idleberg/vite-manifest)](https://packagist.org/packages/idleberg/vite-manifest)
-[![Packagist](https://flat.badgen.net/packagist/php/idleberg/vite-manifest)](https://packagist.org/packages/idleberg/vite-manifest)
 [![Packagist](https://flat.badgen.net/packagist/v/idleberg/vite-manifest)](https://packagist.org/packages/idleberg/vite-manifest)
+[![Packagist](https://flat.badgen.net/packagist/php/idleberg/vite-manifest)](https://packagist.org/packages/idleberg/vite-manifest)
 [![CI](https://img.shields.io/github/workflow/status/idleberg/php-vite-manifest/CI?style=flat-square)](https://github.com/idleberg/php-vite-manifest/actions)
 
 ## Installation
@@ -15,7 +15,9 @@
 
 To get you going, first instantiate the class exposed by this library
 
-Usage: `new ViteManifest(string $manifestPath, string $baseUri, string $algorithm = "sha256")`
+```php
+new ViteManifest(string $manifestPath, string $baseUri, string $algorithm = "sha256");
+```
 
 **Example**
 
