@@ -55,7 +55,7 @@ class ViteManifest
         $this->baseUri = $baseUri;
 
         if (!in_array($algorithm, ["sha256", "sha384", "sha512"])) {
-            throw new \Exception("Unsupported hashing algorithm: $algorithm");
+            throw new \InvalidArgumentException("Unsupported hashing algorithm: $algorithm");
         }
 
         $this->algorithm = $algorithm;
