@@ -22,12 +22,12 @@
         }
     ],
     "require": {
-        "php": "^7.4 || ^8.0",
+        "php": ">=8.0",
         "league/uri": "^6.0"
     },
     "require-dev": {
-        "codeception/codeception": "^4.1",
-        "codeception/module-asserts": "^1.0.0",
+        "codeception/codeception": "^5.0.4",
+        "codeception/module-asserts": "^3.0.0",
         "friendsofphp/php-cs-fixer": "^3.8"
     },
     "scripts": {
