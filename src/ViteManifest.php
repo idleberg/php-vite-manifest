@@ -102,7 +102,7 @@ class ViteManifest
         }
 
         return array_filter(
-            array_map(function ($import, $hash) {
+            array_map(function($import, $hash) {
                 return isset($this->manifest[$import]["file"]) ? [
                     "hash" => $hash ? $this->getFileHash($this->manifest[$import]["file"]) : null,
                     "url"  => $this->getPath($this->manifest[$import]["file"])
@@ -127,7 +127,7 @@ class ViteManifest
         }
 
         return array_filter(
-            array_map(function ($style, $hash) {
+            array_map(function($style, $hash) {
                 return isset($style) ? [
                     "hash" => $hash ? $this->getFileHash($style) : null,
                     "url"  => $this->getPath($style)
