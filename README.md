@@ -7,6 +7,18 @@
 [![Packagist](https://flat.badgen.net/packagist/php/idleberg/vite-manifest)](https://packagist.org/packages/idleberg/vite-manifest)
 [![CI](https://img.shields.io/github/workflow/status/idleberg/php-vite-manifest/CI?style=flat-square)](https://github.com/idleberg/php-vite-manifest/actions)
 
+**Table of contents**
+
+- [Vite Manifest](#vite-manifest)
+  - [Installation](#installation)
+  - [Usage](#usage)
+    - [Methods](#methods)
+      - [`getManifest()`](#getmanifest)
+      - [`getEntrypoint()`](#getentrypoint)
+      - [`getImports()`](#getimports)
+      - [`getStyles()`](#getstyles)
+  - [License](#license)
+
 ## Installation
 
 `composer require idleberg/vite-manifest`
@@ -32,13 +44,13 @@ $vm = new ViteManifest($manifest, $baseUrl);
 
 ### Methods
 
-#### `getManifest`
+#### `getManifest()`
 
 Usage: `getManifest()`
 
 Returns the contents of the manifest file as a PHP array
 
-#### `getEntrypoint`
+#### `getEntrypoint()`
 
 Usage: `getEntrypoint(string $entrypoint, bool $hash = true)`
 
@@ -55,7 +67,7 @@ if ($entrypoint) {
 
 Returns the entrypoint from the manifest
 
-#### `getImports`
+#### `getImports()`
 
 Usage: `getImports(string $entrypoint, bool $hash = true)`
 
@@ -70,7 +82,7 @@ foreach ($vm->getImports("index.ts") as $import) {
 }
 ```
 
-#### `getStyles`
+#### `getStyles()`
 
 Usage: `getStyles(string $entrypoint, bool $hash = true)`
 
