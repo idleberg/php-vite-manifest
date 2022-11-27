@@ -9,15 +9,14 @@
 
 **Table of contents**
 
-- [Vite Manifest](#vite-manifest)
-  - [Installation](#installation)
-  - [Usage](#usage)
-    - [Methods](#methods)
-      - [`getManifest()`](#getmanifest)
-      - [`getEntrypoint()`](#getentrypoint)
-      - [`getImports()`](#getimports)
-      - [`getStyles()`](#getstyles)
-  - [License](#license)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Methods](#methods)
+  - [`getManifest()`](#getmanifest)
+  - [`getEntrypoint()`](#getentrypoint)
+  - [`getImports()`](#getimports)
+  - [`getStyles()`](#getstyles)
+- [License](#license)
 
 ## Installation
 
