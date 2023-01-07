@@ -75,7 +75,7 @@ class ViteManifest
      * Returns the entrypoint from the manifest
      *
      * @param string $entrypoint
-     * @param bool (optional) $hash
+     * @param bool $hash (optional)
      * @return array
      */
     public function getEntrypoint(string $entrypoint, bool $hash = true): array
@@ -90,7 +90,7 @@ class ViteManifest
      * Returns imports for a file listed in the manifest
      *
      * @param string $entrypoint
-     * @param bool (optional) $hash
+     * @param bool $hash (optional)
      * @return array
      */
     public function getImports(string $entrypoint, bool $hash = true): array
@@ -115,7 +115,7 @@ class ViteManifest
      * Returns stylesheets for a file listed in the manifest
      *
      * @param string $entrypoint
-     * @param bool (optional) $hash
+     * @param bool $hash (optional)
      * @return array
      */
     public function getStyles(string $entrypoint, bool $hash = true): array
