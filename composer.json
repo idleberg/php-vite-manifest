@@ -28,11 +28,17 @@
     "require-dev": {
         "codeception/codeception": "^5.0.4",
         "codeception/module-asserts": "^3.0.0",
-        "friendsofphp/php-cs-fixer": "^3.8"
+        "friendsofphp/php-cs-fixer": "^3.8",
+        "phpstan/phpstan": "^1.9"
     },
     "scripts": {
         "format": "vendor/bin/php-cs-fixer fix ./src",
         "lint": "php -l ./src",
         "test": "vendor/bin/codecept run"
+    },
+    "config": {
+        "allow-plugins": {
+            "phpstan/extension-installer": true
+        }
     }
 }
