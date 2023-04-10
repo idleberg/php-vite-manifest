@@ -75,7 +75,7 @@ Returns imports for a file listed in the manifest
 **Example**
 
 ```php
-foreach ($vm->getImports("index.ts") as $import) {
+foreach ($vm->getImports("index.ts", false) as $import) {
     ["url" => $url] = $import;
     echo "<link rel='modulepreload' href='$url' />" . PHP_EOL;
 }
