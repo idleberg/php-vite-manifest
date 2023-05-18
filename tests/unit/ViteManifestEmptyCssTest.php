@@ -1,6 +1,6 @@
 <?php
 
-use Idleberg\ViteManifest\ViteManifest;
+use Idleberg\ViteManifest\Manifest;
 
 class ViteManifestEmptyCssTest extends \Codeception\Test\Unit
 {
@@ -14,7 +14,7 @@ class ViteManifestEmptyCssTest extends \Codeception\Test\Unit
 
     protected function _before()
     {
-        $this->vm = new ViteManifest($this->manifest, $this->baseUrl);
+        $this->vm = new Manifest($this->manifest, $this->baseUrl);
     }
 
     protected function _after()

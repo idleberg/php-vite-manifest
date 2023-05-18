@@ -27,18 +27,18 @@
 To get you going, first instantiate the class exposed by this library
 
 ```php
-new ViteManifest(string $manifestPath, string $baseUri, string $algorithm = "sha256");
+new Manifest(string $manifestPath, string $baseUri, string $algorithm = "sha256");
 ```
 
 **Example**
 
 ```php
-use Idleberg\ViteManifest\ViteManifest;
+use Idleberg\ViteManifest\Manifest;
 
 $baseUrl = "https://idleberg.github.io";
 $manifest = "path/to/manifest.json";
 
-$vm = new ViteManifest($manifest, $baseUrl);
+$vm = new Manifest($manifest, $baseUrl);
 ```
 
 ### Methods

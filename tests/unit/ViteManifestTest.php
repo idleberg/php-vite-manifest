@@ -1,6 +1,6 @@
 <?php
 
-use Idleberg\ViteManifest\ViteManifest;
+use Idleberg\ViteManifest\Manifest;
 
 class ViteManifestTest extends \Codeception\Test\Unit
 {
@@ -14,7 +14,7 @@ class ViteManifestTest extends \Codeception\Test\Unit
 
     protected function _before()
     {
-        $this->vm = new ViteManifest($this->manifest, $this->baseUrl);
+        $this->vm = new Manifest($this->manifest, $this->baseUrl);
     }
 
     protected function _after()
@@ -42,7 +42,7 @@ class ViteManifestTest extends \Codeception\Test\Unit
 
     public function testGetEntryPointSHA256()
     {
-        $vm = new ViteManifest($this->manifest, $this->baseUrl, "sha256");
+        $vm = new Manifest($this->manifest, $this->baseUrl, "sha256");
 
         $entrypoint = $vm->getEntrypoint('demo.ts');
         ["url" => $url, "hash" => $hash] = $entrypoint;
@@ -53,7 +53,7 @@ class ViteManifestTest extends \Codeception\Test\Unit
 
     public function testGetEntryPointSHA384()
     {
-        $vm = new ViteManifest($this->manifest, $this->baseUrl, "sha384");
+        $vm = new Manifest($this->manifest, $this->baseUrl, "sha384");
 
         $entrypoint = $vm->getEntrypoint('demo.ts');
         ["url" => $url, "hash" => $hash] = $entrypoint;
@@ -64,7 +64,7 @@ class ViteManifestTest extends \Codeception\Test\Unit
 
     public function testGetEntryPointSHA512()
     {
-        $vm = new ViteManifest($this->manifest, $this->baseUrl, "sha512");
+        $vm = new Manifest($this->manifest, $this->baseUrl, "sha512");
 
         $entrypoint = $vm->getEntrypoint('demo.ts');
         ["url" => $url, "hash" => $hash] = $entrypoint;
@@ -94,7 +94,7 @@ class ViteManifestTest extends \Codeception\Test\Unit
 
     public function testGetImportsSHA256()
     {
-        $vm = new ViteManifest($this->manifest, $this->baseUrl, "sha256");
+        $vm = new Manifest($this->manifest, $this->baseUrl, "sha256");
 
         foreach ($vm->getImports("demo.ts") as $import) {
             ["url" => $url, "hash" => $hash] = $import;
@@ -106,7 +106,7 @@ class ViteManifestTest extends \Codeception\Test\Unit
 
     public function testGetImportsSHA384()
     {
-        $vm = new ViteManifest($this->manifest, $this->baseUrl, "sha384");
+        $vm = new Manifest($this->manifest, $this->baseUrl, "sha384");
 
         foreach ($vm->getImports("demo.ts") as $import) {
             ["url" => $url, "hash" => $hash] = $import;
@@ -118,7 +118,7 @@ class ViteManifestTest extends \Codeception\Test\Unit
 
     public function testGetImportsSHA512()
     {
-        $vm = new ViteManifest($this->manifest, $this->baseUrl, "sha512");
+        $vm = new Manifest($this->manifest, $this->baseUrl, "sha512");
 
         foreach ($vm->getImports("demo.ts") as $import) {
             ["url" => $url, "hash" => $hash] = $import;
@@ -150,7 +150,7 @@ class ViteManifestTest extends \Codeception\Test\Unit
 
     public function testGetStylesSHA256()
     {
-        $vm = new ViteManifest($this->manifest, $this->baseUrl, "sha256");
+        $vm = new Manifest($this->manifest, $this->baseUrl, "sha256");
 
         foreach ($vm->getStyles("demo.ts") as $style) {
             ["url" => $url, "hash" => $hash] = $style;
@@ -162,7 +162,7 @@ class ViteManifestTest extends \Codeception\Test\Unit
 
     public function testGetStylesSHA384()
     {
-        $vm = new ViteManifest($this->manifest, $this->baseUrl, "sha384");
+        $vm = new Manifest($this->manifest, $this->baseUrl, "sha384");
 
         foreach ($vm->getStyles("demo.ts") as $style) {
             ["url" => $url, "hash" => $hash] = $style;
@@ -174,7 +174,7 @@ class ViteManifestTest extends \Codeception\Test\Unit
 
     public function testGetStylesSHA512()
     {
-        $vm = new ViteManifest($this->manifest, $this->baseUrl, "sha512");
+        $vm = new Manifest($this->manifest, $this->baseUrl, "sha512");
 
         foreach ($vm->getStyles("demo.ts") as $style) {
             ["url" => $url, "hash" => $hash] = $style;

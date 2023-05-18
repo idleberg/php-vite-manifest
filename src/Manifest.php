@@ -27,7 +27,7 @@ namespace Idleberg\ViteManifest;
 use League\Uri\Http;
 use League\Uri\UriResolver;
 
-class ViteManifest
+class Manifest
 {
     private array $manifest;
     private string $baseUri;
