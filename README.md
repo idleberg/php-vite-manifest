@@ -2,10 +2,10 @@
 
 > A parser for [Vite](https://vitejs.dev/) v2 manifest files
 
-[![License](https://img.shields.io/packagist/l/idleberg/vite-manifest?style=for-the-badge&color=blue)](https://github.com/idleberg/php-wordpress-vite-assets/blob/main/LICENSE)
-[![Version](https://img.shields.io/packagist/v/idleberg/vite-manifest?style=for-the-badge)](https://github.com/idleberg/php-wordpress-vite-assets/releases)
+[![License](https://img.shields.io/packagist/l/idleberg/vite-manifest?style=for-the-badge&color=blue)](https://github.com/idleberg/php-vite-manifest/blob/main/LICENSE)
+[![Version](https://img.shields.io/packagist/v/idleberg/vite-manifest?style=for-the-badge)](https://github.com/idleberg/php-vite-manifest/releases)
 ![PHP Version](https://img.shields.io/packagist/dependency-v/idleberg/vite-manifest/php?style=for-the-badge)
-[![Build](https://img.shields.io/github/actions/workflow/status/idleberg/php-wordpress-vite-assets/default.yml?style=for-the-badge)](https://github.com/idleberg/php-wordpress-vite-assets/actions)
+[![Build](https://img.shields.io/github/actions/workflow/status/idleberg/php-vite-manifest/default.yml?style=for-the-badge)](https://github.com/idleberg/php-vite-manifest/actions)
 
 **Table of contents**
 
