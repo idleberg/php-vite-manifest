@@ -80,6 +80,12 @@ class Manifest
      */
     public function getEntrypoint(string $entrypoint, bool $hash = true): array
     {
+        // if entrypoint is a css file return an empty array
+        if (substr($entrypoint, -4) === ".css")
+        {
+            return [];
+        }
+
         return isset($this->manifest[$entrypoint]) ? [
             "hash" => $hash ? $this->getFileHash($this->manifest[$entrypoint]["file"]) : null,
             "url"  => $this->getPath($this->manifest[$entrypoint]["file"])

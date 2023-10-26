@@ -35,4 +35,8 @@ class ViteManifestCssEntryTest extends \Codeception\Test\Unit
     {
         $this->assertEquals(count($this->vm->getStyles("index.css")), 1);
     }
+
+    public function testGetEntrypoint() {
+        $this->assertEquals(count($this->vm->getEntrypoint("index.css")), 0);
+    }
 }
