@@ -26,13 +26,13 @@ class ViteManifestCssEntryTest extends \Codeception\Test\Unit
     public function testGetManifest()
     {
         $actual = $this->vm->getManifest();
-        $expected = json_decode('{"src/main.css":{"file": "assets/main-deadbeef.css","isEntry": true,"src": "src/main.css"}}', true);
+        $expected = json_decode('{"index.css":{"file": "assets/index.deadbeef.css","isEntry": true,"src": "index.css"}}', true);
 
         $this->assertEquals($actual, $expected);
     }
 
     public function testGetStyles()
     {
-        $this->assertEquals(count($this->vm->getStyles("src/main.css")), 1);
+        $this->assertEquals(count($this->vm->getStyles("index.css")), 1);
     }
 }

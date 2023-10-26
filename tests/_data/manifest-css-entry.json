@@ -1,7 +1,7 @@
 {
-  "src/main.css": {
-    "file": "assets/main-deadbeef.css",
+  "index.css": {
+    "file": "assets/index.deadbeef.css",
     "isEntry": true,
-    "src": "src/main.css"
+    "src": "index.css"
   }
 }

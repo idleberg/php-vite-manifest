@@ -121,7 +121,22 @@ class Manifest
     public function getStyles(string $entrypoint, bool $hash = true): array
     {
         // TODO: Refactor for PHP 8.x
-        if (!isset($this->manifest[$entrypoint]) || !isset($this->manifest[$entrypoint]["css"]) || !is_array($this->manifest[$entrypoint]["css"]))
+        if (!isset($this->manifest[$entrypoint]))
+        {
+            return [];
+        }
+
+        // If entrypoint is file, is an entry and ends with .css return it.
+        if (isset($this->manifest[$entrypoint]["file"], $this->manifest[$entrypoint]["isEntry"]) && $this->manifest[$entrypoint]["isEntry"] && substr($this->manifest[$entrypoint]["file"], -4) === ".css")
+        {
+            return [[
+                "hash" => $hash ? $this->getFileHash($this->manifest[$entrypoint]["file"]) : null,
+                "url"  => $this->getPath($this->manifest[$entrypoint]["file"])
+            ]];
+        }
+
+
+        if (!isset($this->manifest[$entrypoint]["css"]) || !is_array($this->manifest[$entrypoint]["css"]))
         {
             return [];
         }
