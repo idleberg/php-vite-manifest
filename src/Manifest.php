@@ -128,10 +128,12 @@ class Manifest
 
         if (isset($this->manifest[$entrypoint]["file"]) && str_ends_with($this->manifest[$entrypoint]["file"], '.css'))
         {
-            return [[
-                "hash" => $hash ? $this->getFileHash($this->manifest[$entrypoint]["file"]) : null,
-                "url"  => $this->getPath($this->manifest[$entrypoint]["file"])
-            ]];
+            return [
+                [
+                    "hash" => $hash ? $this->getFileHash($this->manifest[$entrypoint]["file"]) : null,
+                    "url"  => $this->getPath($this->manifest[$entrypoint]["file"])
+                ]
+            ];
         }
 
         if (!isset($this->manifest[$entrypoint]["css"]) || !is_array($this->manifest[$entrypoint]["css"]))
