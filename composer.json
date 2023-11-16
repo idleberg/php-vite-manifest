@@ -30,7 +30,8 @@
         "codeception/module-asserts": "^3.0.0",
         "friendsofphp/php-cs-fixer": "^3.8",
         "phpstan/phpstan": "^1.9",
-        "icanhazstring/composer-unused": "^0.8.10"
+        "icanhazstring/composer-unused": "^0.8.10",
+        "brainmaestro/composer-git-hooks": "^3.0@alpha"
     },
     "scripts": {
         "format": "vendor/bin/php-cs-fixer fix ./src",
@@ -44,6 +45,15 @@
     "config": {
         "allow-plugins": {
             "phpstan/extension-installer": true
+        }
+    },
+    "extra": {
+        "hooks": {
+            "pre-commit": [
+                "composer run format",
+                "composer run lint",
+                "composer run unused"
+            ]
         }
     }
 }
