@@ -96,13 +96,12 @@ class Manifest
     public function getImports(string $entrypoint, bool $hash = true): array
     {
         // TODO: Refactor for PHP 8.x
-        if (!isset($this->manifest[$entrypoint]) || !isset($this->manifest[$entrypoint]["imports"]) || !is_array($this->manifest[$entrypoint]["imports"]))
-        {
+        if (!isset($this->manifest[$entrypoint]) || !isset($this->manifest[$entrypoint]["imports"]) || !is_array($this->manifest[$entrypoint]["imports"])) {
             return [];
         }
 
         return array_filter(
-            array_map(function($import, $hash) {
+            array_map(function ($import, $hash) {
                 return isset($this->manifest[$import]["file"]) ? [
                     "hash" => $hash ? $this->getFileHash($this->manifest[$import]["file"]) : null,
                     "url"  => $this->getPath($this->manifest[$import]["file"])
@@ -121,13 +120,11 @@ class Manifest
     public function getStyles(string $entrypoint, bool $hash = true): array
     {
         // TODO: Refactor for PHP 8.x
-        if (!isset($this->manifest[$entrypoint]))
-        {
+        if (!isset($this->manifest[$entrypoint])) {
             return [];
         }
 
-        if (isset($this->manifest[$entrypoint]["file"]) && str_ends_with($this->manifest[$entrypoint]["file"], '.css'))
-        {
+        if (isset($this->manifest[$entrypoint]["file"]) && str_ends_with($this->manifest[$entrypoint]["file"], '.css')) {
             return [
                 [
                     "hash" => $hash ? $this->getFileHash($this->manifest[$entrypoint]["file"]) : null,
@@ -136,13 +133,12 @@ class Manifest
             ];
         }
 
-        if (!isset($this->manifest[$entrypoint]["css"]) || !is_array($this->manifest[$entrypoint]["css"]))
-        {
+        if (!isset($this->manifest[$entrypoint]["css"]) || !is_array($this->manifest[$entrypoint]["css"])) {
             return [];
         }
 
         return array_filter(
-            array_map(function($style, $hash) {
+            array_map(function ($style, $hash) {
                 return isset($style) ? [
                     "hash" => $hash ? $this->getFileHash($style) : null,
                     "url"  => $this->getPath($style)
