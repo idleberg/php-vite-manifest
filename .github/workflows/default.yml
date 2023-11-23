@@ -1,8 +1,19 @@
 name: CI
 
 on:
-- push
-- pull_request
+  push:
+    paths:
+    - '.github/**'
+    - 'src/**'
+    - 'tests/**'
+    - 'composer.lock'
+  pull_request:
+    paths:
+    - '.github/**'
+    - 'src/**'
+    - 'tests/**'
+    - 'composer.lock'
+  workflow_dispatch:
 
 jobs:
   run:
