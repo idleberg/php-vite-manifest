@@ -62,7 +62,7 @@ class Manifest
     }
 
     /**
-     * Returns the contents of the manifest file
+     * Returns the contents of the manifest file.
      *
      * @return array
      */
@@ -72,7 +72,7 @@ class Manifest
     }
 
     /**
-     * Returns the entrypoint from the manifest
+     * Returns the entrypoint from the manifest.
      *
      * @param string $entrypoint
      * @param bool $hash (optional)
@@ -87,7 +87,7 @@ class Manifest
     }
 
     /**
-     * Returns imports for a file listed in the manifest
+     * Returns all imports for a file listed in the manifest.
      *
      * @param string $entrypoint
      * @param bool $hash (optional)
@@ -111,7 +111,7 @@ class Manifest
     }
 
     /**
-     * Returns stylesheets for a file listed in the manifest
+     * Returns all stylesheets for a file listed in the manifest.
      *
      * @param string $entrypoint
      * @param bool $hash (optional)
@@ -148,7 +148,7 @@ class Manifest
     }
 
     /**
-     * Returns hash of file
+     * Calculates the hash of a file.
      *
      * @param string $file
      * @return string
@@ -167,7 +167,7 @@ class Manifest
     }
 
     /**
-     * Resolves URL for a given file path
+     * Resolves URL for a given file path.
      *
      * @param string $relativePath
      * @return string
