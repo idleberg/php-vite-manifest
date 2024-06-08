@@ -49,7 +49,7 @@ Specifies the base URI for the assets in the manifest.
 Type: `"sha256"` |`"sha384"` |`"sha512"` | `":manifest:"`  
 Default: `"sha256"`  
 
-Specifies the algorithm used for hashing your assets. You can use `":manifest:"` in conjunction with [vite-plugin-manifest-sri](https://github.com/ElMassimo/vite-plugin-manifest-sri), a plugin that pre-calculates the hashes at build-time.
+Specifies the algorithm used for hashing your assets. You can use `":manifest:"` in conjunction with [vite-plugin-manifest-sri](https://github.com/ElMassimo/vite-plugin-manifest-sri), a plug-in that calculates the hashes at build-time and adds them to the manifest.
 
 **Example**
 
