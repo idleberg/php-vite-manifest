@@ -1,0 +1,8 @@
+{
+  "demo.ts": {
+    "file": "assets/index.deadbeef.js",
+    "src": "demo.ts",
+    "isEntry": true,
+    "integrity": "sha256-hK5PvH3PaGbMYq5EuedyA6F5uVkfoEwAznLNThffuZ8="
+  }
+}

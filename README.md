@@ -30,6 +30,27 @@ To get you going, first instantiate the class exposed by this library
 new Manifest(string $manifestPath, string $baseUri, string $algorithm = "sha256");
 ```
 
+### Parameters
+
+#### `$manifestPath`
+
+Type: `string`
+
+Specifies the path to the manifest.
+
+#### `$baseUri`
+
+Type: `string`
+
+Specifies the base URI for the assets in the manifest.
+
+#### `$algorithm`
+
+Type: `"sha256"` |`"sha384"` |`"sha512"` | `":manifest:`  
+Default: `"sha256"`  
+
+Specifies the algorithm used for hashing your assets. You can use `":manifest:` in conjunction with [vite-plugin-manifest-sri](https://github.com/ElMassimo/vite-plugin-manifest-sri), a plugin that pre-calculates the hashes at build-time.
+
 **Example**
 
 ```php
