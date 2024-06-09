@@ -1,6 +1,6 @@
 # Vite Manifest
 
-> A parser for [Vite](https://vitejs.dev/) v2 manifest files
+> A parser for [Vite](https://vitejs.dev/) v2 manifest files.
 
 [![License](https://img.shields.io/packagist/l/idleberg/vite-manifest?style=for-the-badge&color=blue)](https://github.com/idleberg/php-vite-manifest/blob/main/LICENSE)
 [![Version](https://img.shields.io/packagist/v/idleberg/vite-manifest?style=for-the-badge)](https://github.com/idleberg/php-vite-manifest/releases)
@@ -119,4 +119,4 @@ foreach ($vm->getStyles("index.ts") as $style) {
 
 ## License
 
-This work is licensed under [The MIT License](LICENSE)
+This work is licensed under [The MIT License](LICENSE).
