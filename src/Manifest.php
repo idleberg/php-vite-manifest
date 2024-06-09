@@ -54,7 +54,7 @@ class Manifest
 
         $this->baseUri = $baseUri;
 
-        if (!in_array($algorithm, ["sha256", "sha384", "sha512"])) {
+        if (!in_array($algorithm, ["sha256", "sha384", "sha512", ":manifest:"])) {
             throw new \InvalidArgumentException("Unsupported hashing algorithm: $algorithm");
         }
 
@@ -62,7 +62,7 @@ class Manifest
     }
 
     /**
-     * Returns the contents of the manifest file
+     * Returns the contents of the manifest file.
      *
      * @return array
      */
@@ -72,7 +72,7 @@ class Manifest
     }
 
     /**
-     * Returns the entrypoint from the manifest
+     * Returns the entrypoint from the manifest.
      *
      * @param string $entrypoint
      * @param bool $hash (optional)
@@ -81,13 +81,13 @@ class Manifest
     public function getEntrypoint(string $entrypoint, bool $hash = true): array
     {
         return isset($this->manifest[$entrypoint]) ? [
-            "hash" => $hash ? $this->getFileHash($this->manifest[$entrypoint]["file"]) : null,
+            "hash" => $hash ? $this->getFileHash($this->manifest[$entrypoint]) : null,
             "url"  => $this->getPath($this->manifest[$entrypoint]["file"])
         ] : [];
     }
 
     /**
-     * Returns imports for a file listed in the manifest
+     * Returns all imports for a file listed in the manifest.
      *
      * @param string $entrypoint
      * @param bool $hash (optional)
@@ -103,7 +103,7 @@ class Manifest
         return array_filter(
             array_map(function ($import, $hash) {
                 return isset($this->manifest[$import]["file"]) ? [
-                    "hash" => $hash ? $this->getFileHash($this->manifest[$import]["file"]) : null,
+                    "hash" => $hash ? $this->getFileHash($this->manifest[$import]) : null,
                     "url"  => $this->getPath($this->manifest[$import]["file"])
                 ] : [];
             }, $this->manifest[$entrypoint]["imports"], [$hash])
@@ -111,7 +111,7 @@ class Manifest
     }
 
     /**
-     * Returns stylesheets for a file listed in the manifest
+     * Returns all stylesheets for a file listed in the manifest.
      *
      * @param string $entrypoint
      * @param bool $hash (optional)
@@ -119,7 +119,6 @@ class Manifest
      */
     public function getStyles(string $entrypoint, bool $hash = true): array
     {
-        // TODO: Refactor for PHP 8.x
         if (!isset($this->manifest[$entrypoint])) {
             return [];
         }
@@ -127,7 +126,7 @@ class Manifest
         if (isset($this->manifest[$entrypoint]["file"]) && str_ends_with($this->manifest[$entrypoint]["file"], '.css')) {
             return [
                 [
-                    "hash" => $hash ? $this->getFileHash($this->manifest[$entrypoint]["file"]) : null,
+                    "hash" => $hash ? $this->getFileHash($this->manifest[$entrypoint]) : null,
                     "url"  => $this->getPath($this->manifest[$entrypoint]["file"])
                 ]
             ];
@@ -140,7 +139,7 @@ class Manifest
         return array_filter(
             array_map(function ($style, $hash) {
                 return isset($style) ? [
-                    "hash" => $hash ? $this->getFileHash($style) : null,
+                    "hash" => $hash ? $this->calculateFileHash($style) : null,
                     "url"  => $this->getPath($style)
                 ] : [];
             }, $this->manifest[$entrypoint]["css"], [$hash])
@@ -148,12 +147,27 @@ class Manifest
     }
 
     /**
-     * Returns hash of file
+     * Retrieves the pre-calculated hash from the manifest or calculates it.
+     *
+     * @param array $entrypoint
+     * @return string
+     */
+    private function getFileHash(array $entrypoint): string
+    {
+        if ($this->algorithm === ":manifest:" && $entrypoint["integrity"]) {
+            return $entrypoint["integrity"];
+        }
+
+        return $this->calculateFileHash($entrypoint["file"]);
+    }
+
+    /**
+     * Calculates the hash of a file.
      *
      * @param string $file
      * @return string
      */
-    private function getFileHash(string $file): string
+    private function calculateFileHash(string $file): string
     {
         return "{$this->algorithm}-" . base64_encode(
             openssl_digest(
@@ -167,7 +181,7 @@ class Manifest
     }
 
     /**
-     * Resolves URL for a given file path
+     * Resolves URL for a given file path.
      *
      * @param string $relativePath
      * @return string

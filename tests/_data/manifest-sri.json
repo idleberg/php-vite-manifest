@@ -1,0 +1,26 @@
+{
+  "demo.ts": {
+    "file": "assets/index.deadbeef.js",
+    "src": "demo.ts",
+    "isEntry": true,
+    "integrity": "sha256-hK5PvH3PaGbMYq5EuedyA6F5uVkfoEwAznLNThffuZ8="
+  },
+  "demo.sha256.ts": {
+    "file": "assets/index.deadbeef.js",
+    "src": "demo.sha256.ts",
+    "isEntry": true,
+    "integrity": "sha256-hK5PvH3PaGbMYq5EuedyA6F5uVkfoEwAznLNThffuZ8="
+  },
+  "demo.sha384.ts": {
+    "file": "assets/index.deadbeef.js",
+    "src": "demo.sha384.ts",
+    "isEntry": true,
+    "integrity": "sha384-fWetO954Htoz6cSa6ZLx231UagP8VTXlwaO1g/JisfA9TLZnHPlgPBUwsqrWHjg0"
+  },
+  "demo.sha512.ts": {
+    "file": "assets/index.deadbeef.js",
+    "src": "demo.sha512.ts",
+    "isEntry": true,
+    "integrity": "sha512-yD2Vb8LCDxC5ingFUTEa50J7EaqoK4xJzwimk2+7PPM9jczPfTDHngkduhYar/pz4dCW7qWIhm0fXFDXm1lL/A=="
+  }
+}
