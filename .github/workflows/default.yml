@@ -28,25 +28,25 @@ jobs:
       key: cache-v1 # can be any string, change to clear the extension cache.
     steps:
     - name: Checkout
-      uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # 4.1.1
+      uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # 4.1.6
 
     - name: Setup cache environment
       id: extcache
-      uses: shivammathur/cache-extensions@d622719c5f9eb1f119bee963028d0c0b984525c5 # v1.9.1
+      uses: shivammathur/cache-extensions@dc68c2f249835121c5e44b90b1b5b56ea02735ba # v1.10.1
       with:
         php-version: ${{ matrix.php-versions }}
         extensions: ${{ env.extensions }}
         key: ${{ env.key }}
 
     - name: Cache extensions
-      uses: actions/cache@704facf57e6136b1bc63b828d79edcd491f0ee84 # v3.3.2
+      uses: actions/cache@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9 # v4.0.2
       with:
         path: ${{ steps.extcache.outputs.dir }}
         key: ${{ steps.extcache.outputs.key }}
         restore-keys: ${{ steps.extcache.outputs.key }}
 
     - name: Setup PHP
-      uses: shivammathur/setup-php@a36e1e52ff4a1c9e9c9be31551ee4712a6cb6bd0 # v2.27.1
+      uses: shivammathur/setup-php@fc14643b0a99ee9db10a3c025a33d76544fa3761 # v2.30.5
       with:
         php-version: ${{ matrix.php-versions }}
         extensions: ${{ env.extensions }}
