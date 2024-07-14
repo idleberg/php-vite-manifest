@@ -1,6 +1,6 @@
 {
     "name": "idleberg/vite-manifest",
-    "description": "A parser for Vite v2 manifest files",
+    "description": "A parser for Vite manifest files",
     "type": "library",
     "license": "MIT",
     "keywords": [
