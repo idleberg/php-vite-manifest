@@ -39,15 +39,6 @@ class Manifest
             throw new \Exception("Manifest file does not exist: $manifestFile");
         }
 
-        try {
-            $this->manifest = json_decode(
-                file_get_contents($manifestFile),
-                true
-            );
-        } catch (\Throwable $errorMessage) {
-            throw new \Exception("Failed loading manifest: $errorMessage");
-        }
-
         if (!parse_url($baseUri)) {
             throw new \Exception("Failed to parse URL: $baseUri");
         }
@@ -59,6 +50,15 @@ class Manifest
         }
 
         $this->algorithm = $algorithm;
+
+        try {
+            $this->manifest = json_decode(
+                file_get_contents($manifestFile),
+                true
+            );
+        } catch (\Throwable $errorMessage) {
+            throw new \Exception("Failed loading manifest: $errorMessage");
+        }
     }
 
     /**
