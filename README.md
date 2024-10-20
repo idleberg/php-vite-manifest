@@ -14,6 +14,7 @@
 - [Methods](#methods)
   - [`getManifest()`](#getmanifest)
   - [`getEntrypoint()`](#getentrypoint)
+  - [`getEntrypoints()`](#getentrypoints)
   - [`getImports()`](#getimports)
   - [`getStyles()`](#getstyles)
 - [License](#license)
@@ -24,7 +25,7 @@
 
 ## Usage
 
-To get you going, first instantiate the class exposed by this library
+To get you going, first instantiate the class exposed by this library.
 
 ```php
 new Manifest(string $manifestPath, string $baseUri, string $algorithm = "sha256");
@@ -68,7 +69,7 @@ $vm = new Manifest($manifest, $baseUrl);
 
 Usage: `getManifest()`
 
-Returns the contents of the manifest file as a PHP array
+Returns the contents of the manifest file as a PHP array.
 
 #### `getEntrypoint()`
 
@@ -84,14 +85,17 @@ if ($entrypoint) {
     echo "<script type='module' src='$url' crossorigin integrity='$hash'></script>" . PHP_EOL;
 }
 ```
+#### `getEntrypoints()`
 
-Returns the entrypoint from the manifest
+Usage: `getEntrypoints()`
+
+Returns all entrypoints from the manifest.
 
 #### `getImports()`
 
 Usage: `getImports(string $entrypoint, bool $hash = true)`
 
-Returns imports for a file listed in the manifest
+Returns imports for a file listed in the manifest.
 
 **Example**
 
@@ -106,7 +110,7 @@ foreach ($vm->getImports("index.ts", false) as $import) {
 
 Usage: `getStyles(string $entrypoint, bool $hash = true)`
 
-Returns stylesheets for a file listed in the manifest
+Returns stylesheets for a file listed in the manifest.
 
 **Example**
 
