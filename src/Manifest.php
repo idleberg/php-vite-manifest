@@ -30,8 +30,9 @@ use League\Uri\UriResolver;
 class Manifest
 {
     private array $manifest;
-    private string $baseUri;
+    private array $entries;
     private string $algorithm;
+    private string $baseUri;
 
     public function __construct(string $manifestFile, string $baseUri, string $algorithm = "sha256")
     {
@@ -84,6 +85,20 @@ class Manifest
             "hash" => $hash ? $this->getFileHash($this->manifest[$entrypoint]) : null,
             "url"  => $this->getPath($this->manifest[$entrypoint]["file"])
         ] : [];
+    }
+
+    /**
+     * Returns all entrypoints from the manifest.
+     *
+     * @return array
+     */
+    public function getEntrypoints(): array
+    {
+        if (!isset($this->entries)) {
+            $this->entries = array_filter($this->manifest, fn($entry) => isset($entry['isEntry']) && $entry['isEntry'] === true);
+        }
+
+        return $this->entries;
     }
 
     /**

@@ -1,0 +1,34 @@
+{
+  "entry.ts": {
+    "file": "assets/entry.deadbeef.js",
+    "src": "demo.ts",
+    "isEntry": true,
+    "imports": [
+      "vendor.deadbeef.js"
+    ],
+    "css": [
+      "assets/entry.deadbeef.css"
+    ]
+  },
+  "noentry-false.ts": {
+    "file": "assets/noentry.deadbeef.js",
+    "src": "demo.ts",
+    "isEntry": false,
+    "imports": [
+      "vendor.deadbeef.js"
+    ],
+    "css": [
+      "assets/noentry.deadbeef.css"
+    ]
+  },
+  "noentry-undefined.ts": {
+    "file": "assets/noentry.deadbeef.js",
+    "src": "demo.ts",
+    "imports": [
+      "vendor.deadbeef.js"
+    ],
+    "css": [
+      "assets/noentry.deadbeef.css"
+    ]
+  }
+}
