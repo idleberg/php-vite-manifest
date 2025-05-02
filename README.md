@@ -75,6 +75,8 @@ Returns the contents of the manifest file as a PHP array.
 
 Usage: `getEntrypoint(string $entrypoint, bool $hash = true)`
 
+Returns a specific entrypoint from the manifest.
+
 **Example**
 
 ```php
