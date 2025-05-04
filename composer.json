@@ -32,7 +32,8 @@
         "phpstan/phpstan": "^1.9",
         "icanhazstring/composer-unused": "^0.8.10",
         "brainmaestro/composer-git-hooks": "^3.0.0",
-        "shipmonk/composer-dependency-analyser": "^1.6"
+        "shipmonk/composer-dependency-analyser": "^1.6",
+        "ramsey/conventional-commits": "^1.6"
     },
     "scripts": {
         "format": "vendor/bin/php-cs-fixer fix ./src",
@@ -52,9 +53,13 @@
         "hooks": {
             "config": {
                 "stop-on-failure": [
+                    "commit-msg",
                     "pre-commit"
                 ]
             },
+            "commit-msg": [
+                "./vendor/bin/conventional-commits validate $1"
+            ],
             "pre-commit": [
                 "composer run format",
                 "composer run lint",
