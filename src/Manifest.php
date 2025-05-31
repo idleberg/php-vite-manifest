@@ -83,7 +83,7 @@ class Manifest
     {
         return isset($this->manifest[$entrypoint]) ? [
             "hash" => $hash ? $this->getFileHash($this->manifest[$entrypoint]) : null,
-            "url"  => $this->getPath($this->manifest[$entrypoint]["file"])
+            "url" => $this->getPath($this->manifest[$entrypoint]["file"])
         ] : [];
     }
 
@@ -119,7 +119,7 @@ class Manifest
             array_map(function ($import, $hash) {
                 return isset($this->manifest[$import]["file"]) ? [
                     "hash" => $hash ? $this->getFileHash($this->manifest[$import]) : null,
-                    "url"  => $this->getPath($this->manifest[$import]["file"])
+                    "url" => $this->getPath($this->manifest[$import]["file"])
                 ] : [];
             }, $this->manifest[$entrypoint]["imports"], [$hash])
         );
@@ -142,7 +142,7 @@ class Manifest
             return [
                 [
                     "hash" => $hash ? $this->getFileHash($this->manifest[$entrypoint]) : null,
-                    "url"  => $this->getPath($this->manifest[$entrypoint]["file"])
+                    "url" => $this->getPath($this->manifest[$entrypoint]["file"])
                 ]
             ];
         }
@@ -155,7 +155,7 @@ class Manifest
             array_map(function ($style, $hash) {
                 return isset($style) ? [
                     "hash" => $hash ? $this->calculateFileHash($style) : null,
-                    "url"  => $this->getPath($style)
+                    "url" => $this->getPath($style)
                 ] : [];
             }, $this->manifest[$entrypoint]["css"], [$hash])
         );
