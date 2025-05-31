@@ -25,7 +25,7 @@
 namespace Idleberg\ViteManifest;
 
 use League\Uri\Uri;
-use League\Uri\UriResolver;
+use League\Uri\BaseUri;
 
 class Manifest
 {
@@ -203,9 +203,8 @@ class Manifest
      */
     private function getPath(string $relativePath): string
     {
-        $baseUri = Uri::new($this->baseUri);
-        $relativeUri = Uri::new($relativePath);
+        $baseUri = BaseUri::from($this->baseUri);
 
-        return UriResolver::resolve($relativeUri, $baseUri);
+        return $baseUri->withoutUriFactory()->resolve($relativePath);
     }
 }
