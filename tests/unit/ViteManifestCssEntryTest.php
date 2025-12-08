@@ -9,7 +9,7 @@ class ViteManifestCssEntryTest extends \Codeception\Test\Unit
      */
     protected $tester;
     protected $vm;
-    protected $baseUrl = __DIR__ . "/../_data/";
+    protected $baseUrl = 'file://' . __DIR__ . '/../_data/';
     protected $manifest = __DIR__ . "/../_data/manifest-css-entry.json";
 
     protected function _before()

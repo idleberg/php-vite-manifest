@@ -9,7 +9,7 @@ class ViteManifestEntrypointsTest extends \Codeception\Test\Unit
      */
     protected $tester;
     protected $vm;
-    protected $baseUrl = __DIR__ . "/../_data/";
+    protected $baseUrl = 'file://' . __DIR__ . '/../_data/';
 
     // tests
     public function testEntrypoints()

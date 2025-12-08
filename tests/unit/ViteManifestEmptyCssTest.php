@@ -9,7 +9,7 @@ class ViteManifestEmptyCssTest extends \Codeception\Test\Unit
      */
     protected $tester;
     protected $vm;
-    protected $baseUrl = __DIR__ . "/../_data/";
+    protected $baseUrl = 'file://' . __DIR__ . '/../_data/';
     protected $manifest = __DIR__ . "/../_data/manifest-empty-css.json";
 
     protected function _before()
