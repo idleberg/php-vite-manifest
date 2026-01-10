@@ -29,8 +29,12 @@ use League\Uri\BaseUri;
 
 class Manifest
 {
+    /** @var array<string, array<string, mixed>> */
     private array $manifest;
+
+    /** @var array<string, array<string, mixed>> */
     private array $entries;
+
     private string $algorithm;
     private string $baseUri;
 
@@ -70,7 +74,7 @@ class Manifest
     /**
      * Returns the contents of the manifest file.
      *
-     * @return array
+     * @return array<string, array<string, mixed>>
      */
     public function getManifest(): array
     {
@@ -82,7 +86,7 @@ class Manifest
      *
      * @param string $entrypoint
      * @param bool $hash (optional)
-     * @return array
+     * @return array{url: string, hash: string|null}|array{}
      */
     public function getEntrypoint(string $entrypoint, bool $hash = true): array
     {
@@ -95,7 +99,7 @@ class Manifest
     /**
      * Returns all entrypoints from the manifest.
      *
-     * @return array
+     * @return array<string, array<string, mixed>>
      */
     public function getEntrypoints(): array
     {
@@ -111,7 +115,7 @@ class Manifest
      *
      * @param string $entrypoint
      * @param bool $hash (optional)
-     * @return array
+     * @return array<int, array{url: string, hash: string|null}>
      */
     public function getImports(string $entrypoint, bool $hash = true): array
     {
@@ -132,7 +136,7 @@ class Manifest
      *
      * @param string $entrypoint
      * @param bool $hash (optional)
-     * @return array
+     * @return array<int, array{url: string, hash: string|null}>
      */
     public function getStyles(string $entrypoint, bool $hash = true): array
     {
@@ -164,7 +168,7 @@ class Manifest
     /**
      * Retrieves the pre-calculated hash from the manifest or calculates it.
      *
-     * @param array $entrypoint
+     * @param array<string, mixed> $entrypoint
      * @return string
      */
     private function getFileHash(array $entrypoint): string
