@@ -169,7 +169,11 @@ class Manifest
      */
     private function getFileHash(array $entrypoint): string
     {
-        if ($this->algorithm === ":manifest:" && isset($entrypoint["integrity"])) {
+        if ($this->algorithm === ":manifest:") {
+            if (!isset($entrypoint["integrity"])) {
+                throw new \RuntimeException("Manifest entry is missing 'integrity' field required for :manifest: algorithm");
+            }
+
             return $entrypoint["integrity"];
         }
 
