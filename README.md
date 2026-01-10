@@ -47,13 +47,18 @@ Specifies the base URI for the assets in the manifest.
 
 #### `$algorithm`
 
-Type: `"sha256"` |`"sha384"` |`"sha512"` | `":manifest:"`  
-Default: `"sha256"`  
+Type: `"sha256"` |`"sha384"` |`"sha512"` | `":manifest:"`\
+Default: `"sha256"`
 
-Specifies the algorithm used for hashing the assets. This will be used for [subsource integrity](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity) when printing script or style tags.
+Specifies the algorithm used for hashing the assets. This will be used for
+[subresource integrity](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity)
+when printing script or style tags.
 
 > [!TIP]
-> You can use `":manifest:"` in conjunction with [vite-plugin-manifest-sri](https://github.com/ElMassimo/vite-plugin-manifest-sri), a plug-in that calculates the hashes at build-time and adds them to the manifest.
+> You can use `":manifest:"` in conjunction with
+> [vite-plugin-manifest-sri](https://github.com/ElMassimo/vite-plugin-manifest-sri),
+> a plug-in that calculates the hashes at build-time and adds them to the
+> manifest.
 
 **Example**
 
@@ -90,6 +95,7 @@ if ($entrypoint) {
     echo "<script type='module' src='$url' crossorigin integrity='$hash'></script>" . PHP_EOL;
 }
 ```
+
 #### `getEntrypoints()`
 
 Usage: `getEntrypoints()`
