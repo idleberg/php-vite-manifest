@@ -36,12 +36,14 @@ class Manifest
 
     public function __construct(string $manifestFile, string $baseUri, string $algorithm = "sha256")
     {
-        if (!file_exists(realpath($manifestFile))) {
-            throw new \Exception("Manifest file does not exist: $manifestFile");
+        if (!file_exists($manifestFile)) {
+            throw new \InvalidArgumentException("Manifest file does not exist: $manifestFile");
         }
 
-        if (!parse_url($baseUri)) {
-            throw new \Exception("Failed to parse URL: $baseUri");
+        try {
+            Uri::new($baseUri);
+        } catch (\Throwable) {
+            throw new \InvalidArgumentException("Invalid base URI: $baseUri");
         }
 
         $this->baseUri = $baseUri;
@@ -52,13 +54,16 @@ class Manifest
 
         $this->algorithm = $algorithm;
 
+        $contents = file_get_contents($manifestFile);
+
+        if ($contents === false) {
+            throw new \RuntimeException("Failed to read manifest file: $manifestFile");
+        }
+
         try {
-            $this->manifest = json_decode(
-                file_get_contents($manifestFile),
-                true
-            );
-        } catch (\Throwable $errorMessage) {
-            throw new \Exception("Failed loading manifest: $errorMessage");
+            $this->manifest = json_decode($contents, true, 512, JSON_THROW_ON_ERROR);
+        } catch (\JsonException $e) {
+            throw new \RuntimeException("Failed to parse manifest JSON: " . $e->getMessage());
         }
     }
 
@@ -164,7 +169,7 @@ class Manifest
      */
     private function getFileHash(array $entrypoint): string
     {
-        if ($this->algorithm === ":manifest:" && $entrypoint["integrity"]) {
+        if ($this->algorithm === ":manifest:" && isset($entrypoint["integrity"])) {
             return $entrypoint["integrity"];
         }
 
