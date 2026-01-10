@@ -60,4 +60,26 @@ class ViteManifestErrorHandlingTest extends \Codeception\Test\Unit
         // This manifest doesn't have integrity fields, so it should throw
         $vm->getEntrypoint('demo.ts');
     }
+
+    public function testThrowsExceptionWhenAssetFileNotFound()
+    {
+        $missingAssetManifest = __DIR__ . "/../_data/manifest-missing-asset.json";
+        file_put_contents($missingAssetManifest, json_encode([
+            "index.ts" => [
+                "file" => "assets/does-not-exist.js",
+                "isEntry" => true
+            ]
+        ]));
+
+        try {
+            $vm = new Manifest($missingAssetManifest, $this->baseUrl);
+
+            $this->expectException(\RuntimeException::class);
+            $this->expectExceptionMessage("Failed to calculate hash");
+
+            $vm->getEntrypoint('index.ts');
+        } finally {
+            unlink($missingAssetManifest);
+        }
+    }
 }

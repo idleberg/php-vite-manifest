@@ -192,15 +192,14 @@ class Manifest
      */
     private function calculateFileHash(string $file): string
     {
-        return "{$this->algorithm}-" . base64_encode(
-            openssl_digest(
-                file_get_contents(
-                    $this->getPath($file)
-                ),
-                $this->algorithm,
-                true
-            )
-        );
+        $contents = @file_get_contents($this->getPath($file));
+        $digest = $contents !== false ? openssl_digest($contents, $this->algorithm, true) : false;
+
+        if ($digest === false) {
+            throw new \RuntimeException("Failed to calculate hash for: $file");
+        }
+
+        return "{$this->algorithm}-" . base64_encode($digest);
     }
 
     /**
