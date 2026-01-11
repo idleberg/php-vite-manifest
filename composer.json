@@ -23,17 +23,17 @@
     ],
     "require": {
         "php": ">=8.2",
-        "league/uri": "^7.4.1"
+        "league/uri": "^7.7.0"
     },
     "require-dev": {
-        "codeception/codeception": "^5.0.4",
-        "codeception/module-asserts": "^3.0.0",
-        "friendsofphp/php-cs-fixer": "^3.8",
-        "phpstan/phpstan": "^1.9",
-        "icanhazstring/composer-unused": "^0.8.10",
+        "codeception/codeception": "^5.3.3",
+        "codeception/module-asserts": "^3.2.1",
+        "friendsofphp/php-cs-fixer": "^3.92.5",
+        "phpstan/phpstan": "^1.12.32",
+        "icanhazstring/composer-unused": "^0.8.11",
         "brainmaestro/composer-git-hooks": "^3.0.0",
-        "shipmonk/composer-dependency-analyser": "^1.6",
-        "ramsey/conventional-commits": "^1.6"
+        "shipmonk/composer-dependency-analyser": "^1.8.4",
+        "ramsey/conventional-commits": "^1.6.0"
     },
     "scripts": {
         "format": "vendor/bin/php-cs-fixer fix ./src",
