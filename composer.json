@@ -27,10 +27,10 @@
     },
     "require-dev": {
         "codeception/codeception": "^5.3.3",
-        "codeception/module-asserts": "^3.2.1",
+        "codeception/module-asserts": "^3.3.0",
         "friendsofphp/php-cs-fixer": "^3.92.5",
-        "phpstan/phpstan": "^1.12.32",
-        "icanhazstring/composer-unused": "^0.8.11",
+        "phpstan/phpstan": "^2.3.1",
+        "icanhazstring/composer-unused": "^0.9.6",
         "brainmaestro/composer-git-hooks": "^3.0.0",
         "shipmonk/composer-dependency-analyser": "^1.8.4",
         "ramsey/conventional-commits": "^1.6.0"
