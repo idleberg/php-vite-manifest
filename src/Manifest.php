@@ -90,7 +90,7 @@ class Manifest
      */
     public function getEntrypoint(string $entrypoint, bool $hash = true): array
     {
-        return isset($this->manifest[$entrypoint]) ? [
+        return isset($this->manifest[$entrypoint]["file"]) ? [
             "hash" => $hash ? $this->getFileHash($this->manifest[$entrypoint]) : null,
             "url" => $this->getPath($this->manifest[$entrypoint]["file"])
         ] : [];

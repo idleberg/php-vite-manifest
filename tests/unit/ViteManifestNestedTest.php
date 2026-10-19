@@ -29,6 +29,11 @@ class ViteManifestNestedTest extends \Codeception\Test\Unit
         $this->assertSame($expected, $actual);
     }
 
+    public function testGetEntrypointWithoutFile()
+    {
+        $this->assertSame([], $this->vm->getEntrypoint("_missing.js", false));
+    }
+
     public function testGetStylesRecursively()
     {
         $actual = array_map(fn($item) => $item["url"], $this->vm->getStyles("demo.ts", false));

@@ -26,5 +26,8 @@
     "imports": [
       "_shared.js"
     ]
+  },
+  "_missing.js": {
+    "src": "missing.js"
   }
 }
