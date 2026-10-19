@@ -4,6 +4,7 @@
     "src": "demo.ts",
     "isEntry": true,
     "imports": [
+      "_missing.js",
       "_shared.js"
     ],
     "css": [
@@ -16,8 +17,8 @@
       "_vendor.js"
     ],
     "css": [
-      "assets/shared.deadbeef.css",
-      "assets/index.deadbeef.css"
+      "assets/index.deadbeef.css",
+      "assets/shared.deadbeef.css"
     ]
   },
   "_vendor.js": {

@@ -20,23 +20,23 @@ class ViteManifestNestedTest extends \Codeception\Test\Unit
     // tests
     public function testGetImportsRecursively()
     {
-        $actual = array_column($this->vm->getImports("demo.ts", false), "url");
+        $actual = array_map(fn($item) => $item["url"], $this->vm->getImports("demo.ts", false));
         $expected = [
             "https://example.com/assets/shared.deadbeef.js",
             "https://example.com/assets/vendor.deadbeef.js"
         ];
 
-        $this->assertEquals($expected, array_values($actual));
+        $this->assertSame($expected, $actual);
     }
 
     public function testGetStylesRecursively()
     {
-        $actual = array_column($this->vm->getStyles("demo.ts", false), "url");
+        $actual = array_map(fn($item) => $item["url"], $this->vm->getStyles("demo.ts", false));
         $expected = [
             "https://example.com/assets/index.deadbeef.css",
             "https://example.com/assets/shared.deadbeef.css"
         ];
 
-        $this->assertEquals($expected, array_values($actual));
+        $this->assertSame($expected, $actual);
     }
 }

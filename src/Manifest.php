@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Copyright 2022-2025 Jan T. Sott & contributors
+ * Copyright 2022-2026 Jan T. Sott & contributors
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
@@ -119,12 +119,12 @@ class Manifest
      */
     public function getImports(string $entrypoint, bool $hash = true): array
     {
-        return array_filter(
+        return array_values(array_filter(
             array_map(fn($import): array => isset($this->manifest[$import]["file"]) ? [
                 "hash" => $hash ? $this->getFileHash($this->manifest[$import]) : null,
                 "url" => $this->getPath($this->manifest[$import]["file"])
             ] : [], $this->getImportedChunks($entrypoint))
-        );
+        ));
     }
 
     /**
@@ -158,12 +158,12 @@ class Manifest
             }
         }
 
-        return array_filter(
+        return array_values(array_filter(
             array_map(fn($style): array => isset($style) ? [
                 "hash" => $hash && $this->algorithm !== ":manifest:" ? $this->calculateFileHash($style) : null,
                 "url" => $this->getPath($style)
             ] : [], array_unique($styles))
-        );
+        ));
     }
 
     /**
