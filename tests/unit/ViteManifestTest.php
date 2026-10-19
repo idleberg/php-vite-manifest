@@ -31,6 +31,25 @@ class ViteManifestTest extends \Codeception\Test\Unit
         $this->assertEquals($actual, $expected);
     }
 
+    public function testHashesFromDisk()
+    {
+        $vm = new Manifest($this->manifest, "https://example.invalid/");
+
+        $entrypoint = $vm->getEntrypoint("demo.ts");
+        $this->assertSame("https://example.invalid/assets/index.deadbeef.js", $entrypoint["url"]);
+        $this->assertSame("sha256-hK5PvH3PaGbMYq5EuedyA6F5uVkfoEwAznLNThffuZ8=", $entrypoint["hash"]);
+
+        $styles = $vm->getStyles("demo.ts");
+        $this->assertSame("sha256-EEEKapOxnF8qZUxsx0ksgdBVnEB+8dXUJvH75TwCWvU=", $styles[0]["hash"]);
+    }
+
+    public function testHashesFromViteDirManifest()
+    {
+        $vm = new Manifest(__DIR__ . "/../_data/.vite/manifest.json", "https://example.invalid/");
+
+        $this->assertSame("sha256-hK5PvH3PaGbMYq5EuedyA6F5uVkfoEwAznLNThffuZ8=", $vm->getEntrypoint("demo.ts")["hash"]);
+    }
+
     public function testGetEntryPoint()
     {
         $entrypoint = $this->vm->getEntrypoint('demo.ts');

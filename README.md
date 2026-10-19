@@ -39,6 +39,17 @@ Type: `string`
 
 Specifies the path to the manifest.
 
+Hashes are calculated from the asset files on disk. Their location is derived
+from the manifest path: the manifest's directory, or its parent if the manifest
+sits in a `.vite/` directory (the default since Vite 5).
+
+> [!WARNING]
+> Custom manifest paths via
+> [`build.manifest`](https://vite.dev/config/build-options.html#build-manifest),
+> e.g. `"foo/manifest.json"`, are not supported for hashing, since the build
+> output directory can't be derived from them. Use the default location or pass
+> `false` as `$hash`.
+
 #### `$baseUri`
 
 Type: `string`

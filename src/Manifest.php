@@ -37,12 +37,17 @@ class Manifest
 
     private string $algorithm;
     private string $baseUri;
+    private string $basePath;
 
     public function __construct(string $manifestFile, string $baseUri, string $algorithm = "sha256")
     {
         if (!file_exists($manifestFile)) {
             throw new \InvalidArgumentException("Manifest file does not exist: $manifestFile");
         }
+
+        // Asset paths are relative to Vite's outDir, which is the parent of `.vite/` since Vite 5
+        $dir = dirname((string) realpath($manifestFile));
+        $this->basePath = (basename($dir) === '.vite' ? dirname($dir) : $dir) . '/';
 
         try {
             Uri::new($baseUri);
@@ -222,7 +227,7 @@ class Manifest
      */
     private function calculateFileHash(string $file): string
     {
-        $contents = @file_get_contents($this->getPath($file));
+        $contents = @file_get_contents($this->basePath . $file);
         $digest = $contents !== false ? openssl_digest($contents, $this->algorithm, true) : false;
 
         if ($digest === false) {
