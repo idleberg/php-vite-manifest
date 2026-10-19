@@ -1,0 +1,29 @@
+{
+  "demo.ts": {
+    "file": "assets/index.deadbeef.js",
+    "src": "demo.ts",
+    "isEntry": true,
+    "imports": [
+      "_shared.js"
+    ],
+    "css": [
+      "assets/index.deadbeef.css"
+    ]
+  },
+  "_shared.js": {
+    "file": "assets/shared.deadbeef.js",
+    "imports": [
+      "_vendor.js"
+    ],
+    "css": [
+      "assets/shared.deadbeef.css",
+      "assets/index.deadbeef.css"
+    ]
+  },
+  "_vendor.js": {
+    "file": "assets/vendor.deadbeef.js",
+    "imports": [
+      "_shared.js"
+    ]
+  }
+}

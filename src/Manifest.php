@@ -119,15 +119,11 @@ class Manifest
      */
     public function getImports(string $entrypoint, bool $hash = true): array
     {
-        if (!isset($this->manifest[$entrypoint]) || !isset($this->manifest[$entrypoint]["imports"]) || !is_array($this->manifest[$entrypoint]["imports"])) {
-            return [];
-        }
-
         return array_filter(
             array_map(fn($import): array => isset($this->manifest[$import]["file"]) ? [
                 "hash" => $hash ? $this->getFileHash($this->manifest[$import]) : null,
                 "url" => $this->getPath($this->manifest[$import]["file"])
-            ] : [], $this->manifest[$entrypoint]["imports"])
+            ] : [], $this->getImportedChunks($entrypoint))
         );
     }
 
@@ -153,16 +149,50 @@ class Manifest
             ];
         }
 
-        if (!isset($this->manifest[$entrypoint]["css"]) || !is_array($this->manifest[$entrypoint]["css"])) {
-            return [];
+        // Includes the CSS of all imported chunks, as described in Vite's backend integration guide
+        $styles = [];
+
+        foreach ([$entrypoint, ...$this->getImportedChunks($entrypoint)] as $chunk) {
+            if (isset($this->manifest[$chunk]["css"]) && is_array($this->manifest[$chunk]["css"])) {
+                array_push($styles, ...$this->manifest[$chunk]["css"]);
+            }
         }
 
         return array_filter(
             array_map(fn($style): array => isset($style) ? [
                 "hash" => $hash && $this->algorithm !== ":manifest:" ? $this->calculateFileHash($style) : null,
                 "url" => $this->getPath($style)
-            ] : [], $this->manifest[$entrypoint]["css"])
+            ] : [], array_unique($styles))
         );
+    }
+
+    /**
+     * Returns the keys of all chunks imported by a chunk, recursively.
+     *
+     * @param string $chunk
+     * @param array<string, true> $seen (internal)
+     * @return array<int, string>
+     */
+    private function getImportedChunks(string $chunk, array &$seen = []): array
+    {
+        $seen[$chunk] = true;
+        $imports = $this->manifest[$chunk]["imports"] ?? [];
+        $result = [];
+
+        if (!is_array($imports)) {
+            return [];
+        }
+
+        foreach ($imports as $import) {
+            if (isset($seen[$import])) {
+                continue;
+            }
+
+            $result[] = $import;
+            array_push($result, ...$this->getImportedChunks($import, $seen));
+        }
+
+        return $result;
     }
 
     /**
