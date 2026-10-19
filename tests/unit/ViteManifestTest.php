@@ -193,4 +193,12 @@ class ViteManifestTest extends \Codeception\Test\Unit
             $this->assertEquals($hash, null);
         }
     }
+
+    public function testBaseUriWithoutTrailingSlash()
+    {
+        $vm = new Manifest($this->manifest, "https://example.com/wp-content/themes/foo");
+        ["url" => $url] = $vm->getEntrypoint("demo.ts", false);
+
+        $this->assertEquals("https://example.com/wp-content/themes/foo/assets/index.deadbeef.js", $url);
+    }
 }

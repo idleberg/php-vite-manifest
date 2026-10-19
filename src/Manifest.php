@@ -50,7 +50,7 @@ class Manifest
             throw new \InvalidArgumentException("Invalid base URI: $baseUri");
         }
 
-        $this->baseUri = $baseUri;
+        $this->baseUri = rtrim($baseUri, '/') . '/';
 
         if (!in_array($algorithm, ["sha256", "sha384", "sha512", ":manifest:"])) {
             throw new \InvalidArgumentException("Unsupported hashing algorithm: $algorithm");
