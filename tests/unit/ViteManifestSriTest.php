@@ -66,4 +66,14 @@ class ViteManifestSriTest extends \Codeception\Test\Unit
         $this->assertFileExists($url);
         $this->assertEquals($hash, "sha512-yD2Vb8LCDxC5ingFUTEa50J7EaqoK4xJzwimk2+7PPM9jczPfTDHngkduhYar/pz4dCW7qWIhm0fXFDXm1lL/A==");
     }
+
+    public function testGetStylesFromCssList()
+    {
+        $vm = new Manifest(__DIR__ . "/../_data/manifest-sri-css.json", $this->baseUrl, ":manifest:");
+        $styles = $vm->getStyles('demo.ts');
+
+        $this->assertCount(1, $styles);
+        $this->assertFileExists($styles[0]["url"]);
+        $this->assertNull($styles[0]["hash"]);
+    }
 }

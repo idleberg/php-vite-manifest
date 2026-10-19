@@ -159,7 +159,7 @@ class Manifest
 
         return array_filter(
             array_map(fn($style): array => isset($style) ? [
-                "hash" => $hash ? $this->calculateFileHash($style) : null,
+                "hash" => $hash && $this->algorithm !== ":manifest:" ? $this->calculateFileHash($style) : null,
                 "url" => $this->getPath($style)
             ] : [], $this->manifest[$entrypoint]["css"])
         );
